@@ -69,21 +69,47 @@ function injectRoyalHeader() {
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
     // --- Dynamic Header Behavior for Specific Pages ---
-    const currentPage = window.location.pathname.split('/').pop();
-    const innerPages = ['contact.html', 'faq.html', 'catalog.html', 'product.html', 'documentation.html', 'privacy.html', 'terms.html'];
+    // --- Dynamic Header Behavior for Specific Pages ---
+    // Robust page detection handling extensions and clean URLs
+    const path = window.location.pathname;
+    // Get filename, remove query params/hashes
+    let currentPage = path.split('/').pop().split('?')[0].split('#')[0];
+
+    // Handle root/index cases if necessary, though inner pages usually have names
+    if (currentPage === '') currentPage = 'index.html';
+
+    // List includes both .html and extensionless versions for robustness
+    const innerPages = [
+        'contact.html', 'contact',
+        'faq.html', 'faq',
+        'catalog.html', 'catalog',
+        'product.html', 'product',
+        'documentation.html', 'documentation',
+        'privacy.html', 'privacy',
+        'terms.html', 'terms',
+        'editorial.html', 'editorial'
+    ];
 
     if (innerPages.includes(currentPage)) {
         const header = document.getElementById('royal-header');
         if (header) {
             const toggleHeader = () => {
-                if (window.scrollY > 20) {
+                // Fallback for mobile scrolling
+                const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+
+                if (scrollTop > 20) {
                     header.classList.add('visible');
                 } else {
                     header.classList.remove('visible');
                 }
             };
+
+            // Initial check
             toggleHeader();
+
+            // Add listeners for scroll and touchmove (for mobile responsiveness)
             window.addEventListener('scroll', toggleHeader);
+            window.addEventListener('touchmove', toggleHeader);
         }
     }
     // --- Mobile Menu Toggle Logic ---
