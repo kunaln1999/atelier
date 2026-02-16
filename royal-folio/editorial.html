@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Collection - Boutique Gallery</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;800&family=Lato:wght@300;400;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#FFF5D6',
+                            DEFAULT: '#E6C888', // Standard Gold
+                            dark: '#C4A059',    // Antique Gold
+                            shadow: '#8C6E30',
+                            dim: 'rgba(196, 160, 89, 0.4)'
+                        },
+                        obsidian: '#050505',
+                        royal: '#050505', // Added for compatibility with header/footer
+                        charcoal: '#0a0a0a',
+                        velvet: '#0f0f0f'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                        script: ['"Pinyon Script"', 'cursive'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(120deg, #FDFBF0 0%, #EEDC9A 30%, #D4B264 70%, #F0D695 100%)',
+                        'spotlight': 'radial-gradient(circle at 50% 0%, rgba(230, 200, 136, 0.12) 0%, transparent 60%)',
+                        'dust-gradient': 'radial-gradient(circle, #E6C888 1px, transparent 1px)'
+                    },
+                    boxShadow: {
+                        'museum': '0 30px 60px -12px rgba(0, 0, 0, 0.7)',
+                        'glow': '0 0 25px rgba(196, 160, 89, 0.2)',
+                    },
+                    transitionDuration: {
+                        'slow': '600ms',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Gold Dust Animation */
+        .gold-dust {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .dust-particle {
+            position: absolute;
+            background: #E6C888;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float-rise 15s infinite ease-in-out;
+        }
+
+        @keyframes float-rise {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            80% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-20px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Reveal Animation - Slow & Ceremonial */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Museum Frame Hover Effects */
+        .museum-frame-container {
+            position: relative;
+            padding: 2.5rem;
+            /* Generous breathing room */
+            border: 1px solid rgba(196, 160, 89, 0.2);
+            /* Thin gold border */
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: rgba(10, 10, 10, 0.4);
+        }
+
+        .museum-frame-container::before {
+            /* Inner thin border */
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(196, 160, 89, 0.1);
+            pointer-events: none;
+            transition: all 0.6s ease;
+        }
+
+        .group:hover .museum-frame-container {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(196, 160, 89, 0.15);
+            /* Soft depth + glow */
+            border-color: rgba(230, 200, 136, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .group:hover .museum-frame-container::before {
+            border-color: rgba(230, 200, 136, 0.3);
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            /* Slight inset shift */
+        }
+
+        .museum-image {
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            filter: contrast(1.1) brightness(0.9);
+        }
+
+        .group:hover .museum-image {
+            transform: scale(1.03);
+            /* 3-4% zoom */
+            filter: contrast(1.15) brightness(1);
+        }
+
+        /* Title Fade In */
+        .hover-title-container {
+            opacity: 0.7;
+            transform: translateY(10px);
+            transition: all 0.6s ease-out;
+        }
+
+        .group:hover .hover-title-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gold-underline-anim {
+            width: 0;
+            height: 1px;
+            background-color: #E6C888;
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            margin: 0 auto;
+            margin-top: 1rem;
+        }
+
+        .group:hover .gold-underline-anim {
+            width: 80px;
+            /* Expands outward */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E6C888;
+        }
+    </style>
+</head>
+
+<body class="bg-obsidian text-gold-light min-h-screen font-sans selection:bg-gold-dark selection:text-white">
+
+    <!-- Header Script -->
+    <script src="header.js"></script>
+
+    <!-- HERO SECTION -->
+    <section class="h-screen w-full relative flex flex-col justify-center items-center overflow-hidden"
+        id="hero-section">
+
+        <!-- Backgrounds -->
+        <div class="absolute inset-0 bg-obsidian z-0"></div>
+        <!-- Spotlight Effect -->
+        <div class="absolute inset-0 bg-spotlight pointer-events-none z-10"></div>
+        <!-- Dust container -->
+        <div class="gold-dust z-20" id="dust-container"></div>
+
+        <!-- Hero Content -->
+        <div class="z-30 text-center px-4 reveal active flex flex-col items-center">
+
+            <!-- Grand Heading -->
+            <h1
+                class="font-serif text-5xl md:text-7xl lg:text-9xl text-gold-light tracking-tight mb-8 leading-[1.1] drop-shadow-2xl">
+                The Royal Collection
+            </h1>
+
+            <!-- Divider -->
+            <div class="w-32 h-[1px] bg-gradient-to-r from-transparent via-gold-dark to-transparent mb-8 opacity-70">
+            </div>
+
+            <!-- Subheading -->
+            <p class="font-cinzel text-xs md:text-sm tracking-[0.4em] uppercase text-gold-dark/80 font-semibold">
+                Curated for Sovereigns
+            </p>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div
+            class="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-40 z-30 flex flex-col items-center gap-2">
+            <span class="font-cinzel text-[10px] tracking-widest text-gold-dark">EXPLORE</span>
+            <div class="h-16 w-[1px] bg-gradient-to-b from-gold-dark to-transparent relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1/2 bg-gold-light animate-slide-down"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="py-32 px-4 md:px-12 lg:px-24 w-full bg-obsidian relative z-20" id="gallery-feed">
+
+        <!-- Vertical Framing Lines -->
+        <div class="absolute left-6 md:left-12 top-0 bottom-0 w-[1px] bg-gold-dark/5 hidden md:block"></div>
+        <div class="absolute right-6 md:right-12 top-0 bottom-0 w-[1px] bg-gold-dark/5 hidden md:block"></div>
+
+        <div class="max-w-[1400px] mx-auto">
+
+            <!-- Category I: JEWELLERY -->
+            <div class="mb-40 reveal">
+                <div class="flex items-center justify-center mb-24 relative">
+                    <span
+                        class="font-cinzel text-xs text-gold-dark/60 tracking-[0.5em] relative z-10 bg-obsidian px-6">I.
+                        JEWELLERY</span>
+                    <div class="absolute inset-0 flex items-center justify-center z-0">
+                        <div class="w-full max-w-xs h-[1px] bg-gold-dark/10"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+
+                    <!-- Item 1 -->
+                    <div class="group cursor-pointer">
+                        <!-- Museum Frame -->
+                        <div class="museum-frame-container bg-charcoal/40">
+                            <div class="overflow-hidden aspect-[4/5] relative">
+                                <img src="images/necklace.png" alt="Royal Necklace"
+                                    class="w-full h-full object-cover museum-image">
+                            </div>
+                        </div>
+
+                        <!-- Title below -->
+                        <div class="mt-8 text-center hover-title-container">
+                            <h3 class="font-serif text-3xl text-gold-light italic">The Imperial Necklace</h3>
+                            <p class="font-cinzel text-[10px] tracking-widest mt-2 text-gold-dark/70">18K GOLD • DIAMOND
+                                PAVÉ</p>
+                            <div class="gold-underline-anim"></div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="group cursor-pointer md:mt-32">
+                        <!-- Museum Frame -->
+                        <div class="museum-frame-container bg-charcoal/40">
+                            <div class="overflow-hidden aspect-[4/5] relative">
+                                <img src="images/ring.png" alt="Sovereign Ring"
+                                    class="w-full h-full object-cover museum-image">
+                            </div>
+                        </div>
+
+                        <!-- Title below -->
+                        <div class="mt-8 text-center hover-title-container">
+                            <h3 class="font-serif text-3xl text-gold-light italic">Sovereign's Promise</h3>
+                            <p class="font-cinzel text-[10px] tracking-widest mt-2 text-gold-dark/70">EMERALD CUT •
+                                PLATINUM SETTING</p>
+                            <div class="gold-underline-anim"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Category II: ELEGANCE (Wide Feature) -->
+            <div class="mb-40 reveal">
+                <div class="flex items-center justify-center mb-24 relative">
+                    <span
+                        class="font-cinzel text-xs text-gold-dark/60 tracking-[0.5em] relative z-10 bg-obsidian px-6">II.
+                        ELEGANCE</span>
+                    <div class="absolute inset-0 flex items-center justify-center z-0">
+                        <div class="w-full max-w-xs h-[1px] bg-gold-dark/10"></div>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer w-full max-w-5xl mx-auto">
+                    <div class="museum-frame-container bg-charcoal/40 p-3 md:p-12">
+                        <div class="overflow-hidden aspect-video relative">
+                            <img src="images/store.png" alt="The Grand Salon"
+                                class="w-full h-full object-cover museum-image">
+                        </div>
+                    </div>
+
+                    <div class="mt-10 text-center hover-title-container">
+                        <h3 class="font-serif text-4xl text-gold-light italic">The Grand Salon</h3>
+                        <p class="font-cinzel text-[10px] tracking-widest mt-3 text-gold-dark/70">INTERIOR ARCHITECTURE
+                            • PRIVATE VIEWING</p>
+                        <div class="gold-underline-anim"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Category III: GALLERY (Grid) -->
+            <div class="mb-24 reveal">
+                <div class="flex items-center justify-center mb-24 relative">
+                    <span
+                        class="font-cinzel text-xs text-gold-dark/60 tracking-[0.5em] relative z-10 bg-obsidian px-6">III.
+                        PORTFOLIO</span>
+                    <div class="absolute inset-0 flex items-center justify-center z-0">
+                        <div class="w-full max-w-xs h-[1px] bg-gold-dark/10"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <!-- Item 3 -->
+                    <div class="group cursor-pointer">
+                        <div class="museum-frame-container bg-charcoal/40 p-6">
+                            <div class="overflow-hidden aspect-[3/4] relative">
+                                <img src="images/the_matriarch.png" alt="Royal Portrait"
+                                    class="w-full h-full object-cover museum-image">
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center hover-title-container">
+                            <h4 class="font-serif text-2xl text-gold-light italic">The Matriarch</h4>
+                            <div class="gold-underline-anim" style="margin-top: 0.5rem; max-width: 40px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="group cursor-pointer md:-mt-16">
+                        <div class="museum-frame-container bg-charcoal/40 p-6">
+                            <div class="overflow-hidden aspect-[3/4] relative">
+                                <img src="images/adornments_of_light.png" alt="Adornments"
+                                    class="w-full h-full object-cover museum-image">
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center hover-title-container">
+                            <h4 class="font-serif text-2xl text-gold-light italic">Adornments of Light</h4>
+                            <div class="gold-underline-anim" style="margin-top: 0.5rem; max-width: 40px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="group cursor-pointer">
+                        <div class="museum-frame-container bg-charcoal/40 p-6">
+                            <div class="overflow-hidden aspect-[3/4] relative">
+                                <img src="images/hero_jewelry_v2.png" alt="Heirloom"
+                                    class="w-full h-full object-cover museum-image">
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center hover-title-container">
+                            <h4 class="font-serif text-2xl text-gold-light italic">Heirloom Quality</h4>
+                            <div class="gold-underline-anim" style="margin-top: 0.5rem; max-width: 40px;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Script -->
+    <script src="footer.js"></script>
+
+    <!-- Interactive Script -->
+    <script src="royal.js"></script>
+
+    <style>
+        @keyframes slide-down {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .animate-slide-down {
+            animation: slide-down 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gilded Atelier - Client Services</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;800&family=Lato:wght@300;400;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#FFF5D6',
+                            DEFAULT: '#E6C888',
+                            dark: '#C4A059',
+                            shadow: '#8C6E30',
+                            dim: 'rgba(196, 160, 89, 0.4)'
+                        },
+                        obsidian: '#050505',
+                        royal: '#050505',
+                        charcoal: '#0a0a0a', // Darker charcoal from boutique
+                        velvet: '#0f0f0f'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                        script: ['"Pinyon Script"', 'cursive'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'spotlight': 'radial-gradient(circle at 50% 0%, rgba(230, 200, 136, 0.08) 0%, transparent 70%)',
+                        'dust-gradient': 'radial-gradient(circle, #E6C888 1px, transparent 1px)'
+                    },
+                    boxShadow: {
+                        'glow': '0 0 25px rgba(196, 160, 89, 0.1)',
+                    },
+                    transitionDuration: {
+                        'slow': '800ms',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Fog/Spotlight */
+        .ambient-fog {
+            position: fixed;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, rgba(196, 160, 89, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Gold Dust Particles (reusing logic but softer styles) */
+        .gold-dust {
+            position: absolute;
+            background: #E6C888;
+            border-radius: 50%;
+            opacity: 0;
+            animation: dust-rise 20s infinite linear;
+        }
+
+        @keyframes dust-rise {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.4;
+            }
+
+            80% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* EDITORIAL ACCORDION STYLES */
+        .faq-item {
+            border-bottom: 1px solid rgba(196, 160, 89, 0.15);
+            transition: all 0.5s ease;
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid rgba(196, 160, 89, 0.15);
+        }
+
+        /* Hover effect: Gold line expands */
+        .faq-item::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: #E6C888;
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            margin-top: -1px;
+            /* Overlap border-bottom */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .faq-item:hover::after,
+        .faq-item.active::after {
+            width: 100%;
+        }
+
+        /* Question Text Transition */
+        .faq-question {
+            transition: color 0.5s ease, transform 0.5s ease;
+        }
+
+        .faq-item:hover .faq-question,
+        .faq-item.active .faq-question {
+            color: #E6C888;
+            /* Gold Default */
+            transform: translateX(10px);
+        }
+
+        /* Answer Reveal */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: max-height 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.5s ease 0.1s,
+                transform 0.5s ease 0.1s;
+        }
+
+        .faq-item.active .faq-answer {
+            /* max-height set by JS */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Icon Rotation */
+        .faq-icon {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            /* Turns plus to x */
+            color: #E6C888;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E6C888;
+        }
+    </style>
+</head>
+
+<body
+    class="min-h-screen flex flex-col font-sans selection:bg-gold-dark selection:text-white bg-obsidian text-gold-light">
+
+    <!-- Header Injection -->
+    <script src="header.js"></script>
+
+    <!-- BACKGROUND ELEMENTS -->
+    <div class="ambient-fog"></div>
+    <div id="gold-dust-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-12 pt-40 pb-32">
+
+        <!-- HEADER SECTION: Minimalist & Editorial -->
+        <section class="mb-32 flex flex-col items-start fade-in-section">
+            <div class="flex items-center space-x-4 mb-6 opacity-60">
+                <div class="h-[1px] w-12 bg-gold-dark"></div>
+                <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-gold-dark">Client Services</span>
+            </div>
+
+            <h1 class="font-serif text-6xl md:text-8xl text-gold-light leading-[0.9]">
+                The Atelier <br>
+                <span class="italic text-gold-dark opacity-80 pl-2 md:pl-4">Assistance</span>
+            </h1>
+        </section>
+
+        <!-- FAQ LIST: The "Editorial Decree" -->
+        <section class="w-full max-w-4xl ml-auto mr-0 fade-in-section delay-200">
+
+            <!-- Item 01 -->
+            <div class="faq-item group relative cursor-pointer py-12" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-baseline">
+                    <div class="pr-8 flex flex-col">
+                        <span
+                            class="font-cinzel text-xs text-gold-dark/50 tracking-widest mb-2 group-hover:text-gold-dark transition-colors">I.
+                            COMMISSION</span>
+                        <h3
+                            class="faq-question font-serif text-3xl md:text-4xl text-gray-300 group-hover:text-gold-light">
+                            How does one commission a bespoke piece?
+                        </h3>
+                    </div>
+                    <div class="faq-icon text-3xl text-gold-dark/50 font-light">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="pt-8 pl-0 md:pl-10 max-w-2xl">
+                        <p class="font-sans text-gray-400 leading-8 text-lg font-light">
+                            The commissioning process is a collaborative journey of artistry. It begins with a private
+                            consultation,
+                            where your vision is discussed with our master artisans. Following this, sketches and gem
+                            selections
+                            are presented for your approval before our atelier brings your unique masterpiece to life.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 02 -->
+            <div class="faq-item group relative cursor-pointer py-12" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-baseline">
+                    <div class="pr-8 flex flex-col">
+                        <span
+                            class="font-cinzel text-xs text-gold-dark/50 tracking-widest mb-2 group-hover:text-gold-dark transition-colors">II.
+                            PROVENANCE</span>
+                        <h3
+                            class="faq-question font-serif text-3xl md:text-4xl text-gray-300 group-hover:text-gold-light">
+                            Provenance of the gemstones
+                        </h3>
+                    </div>
+                    <div class="faq-icon text-3xl text-gold-dark/50 font-light">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="pt-8 pl-0 md:pl-10 max-w-2xl">
+                        <p class="font-sans text-gray-400 leading-8 text-lg font-light">
+                            We adhere to the strictest standards of ethical sourcing. Each gemstone in our collection is
+                            accompanied
+                            by certification from globally recognized gemological institutes, ensuring its origin,
+                            authenticity,
+                            and conflict-free status. We curate only the rarest stones with exceptional clarity and
+                            fire.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 03 -->
+            <div class="faq-item group relative cursor-pointer py-12" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-baseline">
+                    <div class="pr-8 flex flex-col">
+                        <span
+                            class="font-cinzel text-xs text-gold-dark/50 tracking-widest mb-2 group-hover:text-gold-dark transition-colors">III.
+                            CONSULTATION</span>
+                        <h3
+                            class="faq-question font-serif text-3xl md:text-4xl text-gray-300 group-hover:text-gold-light">
+                            Do you offer private consultations?
+                        </h3>
+                    </div>
+                    <div class="faq-icon text-3xl text-gold-dark/50 font-light">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="pt-8 pl-0 md:pl-10 max-w-2xl">
+                        <p class="font-sans text-gray-400 leading-8 text-lg font-light">
+                            Indeed. We provide private, by-appointment viewings at our flagship boutiques or strictly
+                            confidential
+                            consultations at a location of your preference. Our concierge team is available to arrange
+                            these
+                            appointments to suit your schedule with the utmost discretion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 04 -->
+            <div class="faq-item group relative cursor-pointer py-12" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-baseline">
+                    <div class="pr-8 flex flex-col">
+                        <span
+                            class="font-cinzel text-xs text-gold-dark/50 tracking-widest mb-2 group-hover:text-gold-dark transition-colors">IV.
+                            ACQUISITION</span>
+                        <h3
+                            class="faq-question font-serif text-3xl md:text-4xl text-gray-300 group-hover:text-gold-light">
+                            International shipping protocols
+                        </h3>
+                    </div>
+                    <div class="faq-icon text-3xl text-gold-dark/50 font-light">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="pt-8 pl-0 md:pl-10 max-w-2xl">
+                        <p class="font-sans text-gray-400 leading-8 text-lg font-light">
+                            We offer secure, fully insured global delivery services. For items of significant value,
+                            we can arrange for personal courier delivery to ensure your acquisition reaches you with the
+                            utmost security. All protocols are handled with white-glove precision.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 05 -->
+            <div class="faq-item group relative cursor-pointer py-12" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-baseline">
+                    <div class="pr-8 flex flex-col">
+                        <span
+                            class="font-cinzel text-xs text-gold-dark/50 tracking-widest mb-2 group-hover:text-gold-dark transition-colors">V.
+                            PRESERVATION</span>
+                        <h3
+                            class="faq-question font-serif text-3xl md:text-4xl text-gray-300 group-hover:text-gold-light">
+                            Caring for heirloom pieces
+                        </h3>
+                    </div>
+                    <div class="faq-icon text-3xl text-gold-dark/50 font-light">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="pt-8 pl-0 md:pl-10 max-w-2xl">
+                        <p class="font-sans text-gray-400 leading-8 text-lg font-light">
+                            Heirloom pieces require delicate preservation. We recommend an annual professional
+                            inspection
+                            and cleaning by our atelier. For daily care, avoid exposure to harsh chemicals and store
+                            each
+                            piece individually in its provided velvet casing to prevent scratches.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CTA SECTION: Minimal & Direct -->
+        <section
+            class="mt-40 border-t border-gold-dark/20 pt-20 flex flex-col md:flex-row justify-between items-end fade-in-section">
+            <div class="max-w-md">
+                <span class="font-cinzel text-xs text-gold-dark tracking-widest uppercase block mb-6">Concierge</span>
+                <h3 class="font-serif text-3xl text-gold-light italic mb-4">Specific Requirements?</h3>
+                <p class="font-sans text-gray-500 font-light">
+                    Our atelier is at your disposal for any specialized requests or private viewing arrangements.
+                </p>
+            </div>
+
+            <a href="contact.html"
+                class="mt-10 md:mt-0 group flex items-center gap-4 text-gold-light hover:text-white transition-colors cursor-pointer">
+                <span class="font-cinzel text-sm tracking-[0.25em] uppercase">Contact The Atelier</span>
+                <span class="w-12 h-[1px] bg-gold-dark group-hover:w-20 transition-all duration-500"></span>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer Injection -->
+    <script src="footer.js"></script>
+
+    <!-- Interactive Script -->
+    <script src="faq.js"></script>
+
+    <!-- Entrance Animation Script (Inline for simplicity) -->
+    <style>
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>

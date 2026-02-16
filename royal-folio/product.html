@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail &mdash; The Gilded Atelier</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#FFF5D6',
+                            DEFAULT: '#E6C888',
+                            dark: '#C4A059',
+                            shadow: '#8C6E30',
+                        },
+                        obsidian: '#050505',
+                        royal: '#050505',
+                        charcoal: '#0a0a0a',
+                        velvet: '#0f0f0f',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        script: ['Pinyon Script', 'cursive'],
+                        sans: ['Lato', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            border-radius: 0 !important;
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .royal-frame {
+            border: 1px solid rgba(196, 160, 89, 0.2);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #C4A059, #F3E5AB, #C4A059);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Architectural lines */
+        .arch-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(196, 160, 89, 0.3), transparent);
+            width: 100%;
+        }
+
+        /* Image Container - Sharp Edges & Transitions */
+        .image-frame {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(196, 160, 89, 0.2);
+            transition: border-color 0.6s ease, box-shadow 0.6s ease;
+        }
+
+        .catalog-item:hover .image-frame,
+        .image-viewer-frame:hover {
+            border-color: rgba(230, 200, 136, 0.6);
+            box-shadow: 0 0 30px rgba(196, 160, 89, 0.1);
+        }
+
+        .catalog-image,
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+            filter: brightness(0.9) contrast(1.05);
+        }
+
+        .catalog-item:hover .catalog-image,
+        .image-viewer-frame:hover .product-image {
+            transform: scale(1.04);
+            filter: brightness(1.0) contrast(1.1);
+        }
+
+        /* Text Styling & Glow */
+        .item-title {
+            transition: color 0.5s ease;
+        }
+
+        .catalog-item:hover .item-title {
+            color: #FFF5D6;
+            text-shadow: 0 0 10px rgba(230, 200, 136, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-obsidian">
+
+    <!-- Header Injection Point -->
+    <div id="header-root"></div>
+    <script src="header.js"></script>
+
+    <!-- MAIN PRODUCT SECTION -->
+    <main class="min-h-screen pt-32 pb-24 px-6 md:px-12 lg:px-24">
+
+        <!-- Breadcrumbs -->
+        <nav class="mb-12 opacity-60 text-[10px] uppercase tracking-[0.3em] font-cinzel">
+            <a href="index.html" class="hover:text-gold transition-colors">Atelier</a>
+            <span class="mx-3 text-gold-dark">/</span>
+            <a href="catalog.html" class="hover:text-gold transition-colors">Collection</a>
+            <span class="mx-3 text-gold-dark">/</span>
+            <span id="breadcrumb-current" class="text-gold-light">Masterpiece</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+            <!-- Left: Visual Sanctuary -->
+            <div>
+                <div class="image-viewer-frame aspect-[4/5] bg-charcoal/20">
+                    <img id="product-img" src="" alt="" class="product-image w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Right: The Narrative -->
+            <div class="flex flex-col space-y-8">
+                <div>
+                    <span id="product-category"
+                        class="font-cinzel text-xs tracking-[0.5em] text-gold-dark uppercase mb-4 block">Haute
+                        Joaillerie</span>
+                    <h1 id="product-title" class="font-serif text-5xl md:text-6xl text-gold-light leading-tight mb-4">
+                        Masterpiece Title</h1>
+                    <div id="product-price" class="font-sans text-xl text-gray-400 tracking-wide">$0.00</div>
+                </div>
+
+                <div class="arch-line"></div>
+
+                <div class="space-y-6">
+                    <p id="product-description" class="font-sans text-gray-300 leading-relaxed text-lg">
+                        Detailed narrative about the piece, its inspiration, and the sovereign craftsmanship involved in
+                        its creation.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-cinzel text-xs tracking-[0.4em] text-gold-light uppercase mb-6">Les Détails</h3>
+                    <ul id="product-specs" class="space-y-4">
+                        <!-- Specs injected via JS -->
+                    </ul>
+                </div>
+
+                <div class="pt-8">
+                    <button onclick="window.location.href='contact.html'"
+                        class="w-full px-12 py-5 border border-gold-dark/50 text-gold-light font-cinzel tracking-[0.25em] text-xs uppercase relative overflow-hidden group transition-all duration-500 hover:bg-gold-light hover:text-royal">
+                        <span class="relative z-10">Arrange an Exclusive Consultation</span>
+                        <div
+                            class="absolute inset-0 bg-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SUGGESTED PIECES -->
+    <section class="pb-32 px-6 lg:px-24">
+        <div class="arch-line mb-24"></div>
+        <h2 class="font-serif text-3xl text-gold-light italic text-center mb-16">Explore the Collection</h2>
+        <div id="related-grid" class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Suggested items injected via JS -->
+        </div>
+    </section>
+
+    <!-- Footer Script -->
+    <script src="footer.js"></script>
+
+    <!-- Data & Controller -->
+    <script src="products.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id') || 'imperial-collier';
+
+            // Find product
+            const product = catalogItems.find(p => p.id === productId) || catalogItems[0];
+
+            // Inject Details
+            document.title = `${product.title} \u2014 The Gilded Atelier`;
+            document.getElementById('breadcrumb-current').textContent = product.title;
+            document.getElementById('product-title').textContent = product.title;
+            document.getElementById('product-category').textContent = product.category;
+            document.getElementById('product-price').textContent = product.price;
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-img').src = product.image;
+            document.getElementById('product-img').alt = product.title;
+
+            // Specs
+            const specsList = document.getElementById('product-specs');
+            product.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center space-x-3 text-[11px] uppercase tracking-widest text-gray-500';
+                li.innerHTML = `<span class="w-1.5 h-1.5 bg-gold-dark/40"></span> <span>${spec}</span>`;
+                specsList.appendChild(li);
+            });
+
+            // Related items (random 3)
+            const relatedGrid = document.getElementById('related-grid');
+            const others = catalogItems.filter(p => p.id !== productId).sort(() => 0.5 - Math.random()).slice(0, 3);
+
+            others.forEach(item => {
+                const div = document.createElement('article');
+                div.className = 'catalog-item group cursor-pointer text-center';
+                div.onclick = () => window.location.href = `product.html?id=${item.id}`;
+                div.innerHTML = `
+                    <div class="image-frame aspect-[3/4] mb-6">
+                        <img src="${item.image}" class="catalog-image">
+                    </div>
+                    <h4 class="font-serif text-lg text-gold-light mb-1 item-title uppercase tracking-wide">${item.title}</h4>
+                    <p class="font-sans text-gold-light/90 text-sm">${item.price}</p>
+                `;
+                relatedGrid.appendChild(div);
+            });
+        });
+    </script>
+</body>
+
+</html>

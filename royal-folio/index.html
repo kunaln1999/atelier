@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gilded Atelier — Haute Joaillerie & Master Craftsmanship</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Lato:wght@300;400;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#FFF5D6',
+                            DEFAULT: '#E6C888',
+                            dark: '#C4A059',
+                            shadow: '#8C6E30'
+                        },
+                        charcoal: '#151515',
+                        royal: '#050505'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                        script: ['"Pinyon Script"', 'cursive'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gold-gradient': 'linear-gradient(120deg, #FDFBF0 0%, #EEDC9A 30%, #D4B264 70%, #F0D695 100%)',
+                        'gold-text': 'linear-gradient(to right, #FDFBF0, #EEDC9A, #FDFBF0)',
+                        'dark-texture': 'linear-gradient(to bottom, #111, #000)'
+                    },
+                    boxShadow: {
+                        'elegant': '0 20px 50px -12px rgba(0, 0, 0, 0.5)',
+                        'inner-gold': 'inset 0 0 0 1px rgba(26, 26, 26, 0.1)'
+                    },
+                    letterSpacing: {
+                        'widest-royal': '0.25em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Specific Visual Fidelity */
+        body {
+            background-color: #050505;
+        }
+
+        /* Subtle Grain Texture */
+        .texture-grain {
+            position: relative;
+        }
+
+        .texture-grain::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            z-index: 1;
+        }
+
+        /* Elegant Thin Lines */
+        .hairline-border {
+            position: relative;
+        }
+
+        .hairline-border::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            border: 1px solid rgba(26, 26, 26, 0.15);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Smooth reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Shine effect for gold text */
+        .shine-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Perspective background */
+        .perspective-bg {
+            background-image:
+                radial-gradient(circle at 50% 0%, #ffffff 0%, #dcdcdc 70%);
+        }
+    </style>
+</head>
+
+<body
+    class="min-h-screen flex flex-col items-center overflow-x-hidden font-sans selection:bg-gold-dark selection:text-white bg-royal">
+
+    <!-- Dynamic Header Component -->
+    <script src="header.js"></script>
+
+    <!-- SECTION 1: THE HERO SECTION (Gold) -->
+    <section
+        class="w-full h-screen sticky top-0 z-10 bg-[linear-gradient(135deg,#111111_0%,#1a1408_25%,#2d2410_50%,#151515_80%,#050505_100%)] overflow-hidden texture-grain hairline-border px-6 md:px-8"
+        id="hero-section">
+
+        <!-- Subtle Inner Accents -->
+        <div class="absolute inset-0 pointer-events-none border-[3px] border-gold-dark/30 z-30"></div>
+        <div class="absolute inset-0 pointer-events-none border border-charcoal/20 z-30"></div>
+
+        <!-- Right Image Area (Moved outside to fill utmost right) -->
+        <div class="absolute right-0 bottom-0 top-0 w-full md:w-3/5 pointer-events-none overflow-hidden z-10">
+            <!-- Using a majestic royal portrait -->
+            <img src="images/woman-portrait.png" alt="Majestic Haute Joaillerie"
+                class="absolute right-0 bottom-[-5%] w-[110%] h-[110%] object-cover object-center contrast-[1.02] brightness-[1.05]"
+                style="mask-image: linear-gradient(to left, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);">
+        </div>
+
+        <div class="max-w-[1300px] mx-auto h-full flex flex-col md:flex-row relative z-20 reveal active">
+
+            <!-- Left Content -->
+            <div class="relative z-20 flex-1 py-16 md:py-28 flex flex-col justify-start h-full pr-12 md:pr-20">
+
+                <!-- Top Logo -->
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-16 h-16 flex items-center justify-center">
+                        <img src="images/crown.png" alt="Royal Crown Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div class="flex items-center">
+                        <span
+                            class="font-cinzel text-xl tracking-[0.25em] text-gold-light uppercase leading-none mt-1">The
+                            Gilded Atelier</span>
+                    </div>
+                </div>
+
+                <!-- Main Title Area -->
+                <div class="flex-grow flex flex-col justify-center relative z-20">
+                    <h1
+                        class="font-serif text-5xl md:text-6xl lg:text-7xl text-gold-light leading-[0.9] mb-8 tracking-tight drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
+                        The Gilded<br>
+                        <span class="font-normal italic">Atelier</span>
+                    </h1>
+
+                    <div class="relative">
+                        <h2
+                            class="font-script text-5xl md:text-6xl lg:text-7xl text-gold-light/90 mt-4 ml-2 transform -rotate-3 origin-left relative z-10 drop-shadow-sm">
+                            Haute Joaillerie
+                        </h2>
+                    </div>
+
+                    <!-- Enhanced Badge -->
+                    <div class="flex items-center mt-12 space-x-6 border-l-2 border-gold-dark/30 pl-6 py-2">
+                        <div
+                            class="bg-royal text-gold-light w-10 h-10 flex items-center justify-center font-sans font-bold text-lg shadow-lg border-2 border-gold/40">
+                            Au
+                        </div>
+                        <div class="flex flex-col space-y-1">
+                            <span
+                                class="text-gold-light font-cinzel font-bold tracking-[0.15em] text-xs uppercase border-b border-gold-dark/10 pb-1">Master
+                                Craftsmanship</span>
+                            <span
+                                class="text-gold-light/70 text-[10px] tracking-wider uppercase font-sans">Conflict-Free
+                                &
+                                Ethically Sourced</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: DARK SHOWCASE (The Context) -->
+    <section class="w-full text-gold py-24 px-4 md:px-12 relative z-0 bg-royal">
+
+        <div class="max-w-[1300px] mx-auto">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-gold-dark/20 pb-10 reveal">
+                <div class="relative pl-8">
+                    <div class="absolute left-0 top-0 bottom-0 w-[1px] bg-gold-dark/40"></div>
+                    <h3 class="font-serif text-5xl md:text-6xl text-gold-light mb-4 shine-text italic">Eternal
+                        Radiance
+                    </h3>
+                    <p class="font-sans text-gray-500 max-w-md tracking-wide leading-relaxed pl-1">Discover a world
+                        where light meets legend. Our collections are a testament to the art of fine jewelry,
+                        designed
+                        for those who seek the extraordinary.</p>
+                </div>
+                <button
+                    class="group mt-8 md:mt-0 px-10 py-4 border border-gold-dark/50 text-gold-light hover:bg-gold-dark hover:text-royal transition-all duration-500 font-cinzel tracking-[0.2em] text-xs uppercase relative overflow-hidden">
+                    <span class="relative z-10">Immerse in the Archives</span>
+                    <div
+                        class="absolute inset-0 bg-gold-light opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    </div>
+                </button>
+            </div>
+
+            <!-- Grid of Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- Card 1 -->
+                <div class="group cursor-pointer reveal delay-100">
+                    <div
+                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gray-900 relative shadow-2xl">
+                        <div
+                            class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors duration-700 z-10">
+                        </div>
+                        <!-- Frame Border inside card -->
+                        <div
+                            class="absolute inset-3 border border-white/10 z-20 transition-all duration-500 group-hover:inset-4 group-hover:border-gold/50">
+                        </div>
+
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 z-30 transform translate-y-4 group-hover:translate-y-0">
+                            <span class="font-script text-4xl text-gold-light drop-shadow-lg">Haute
+                                Joaillerie</span>
+                        </div>
+                        <img src="images/necklace.png"
+                            class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-1000"
+                            alt="High Jewelry Necklace">
+                    </div>
+                    <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+                        <h4 class="font-serif text-2xl text-gold-light tracking-wide">High Jewelry</h4>
+                        <span class="font-cinzel text-[10px] text-gray-500 uppercase tracking-widest">04
+                            Creations</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group cursor-pointer reveal delay-200">
+                    <div
+                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gray-900 relative shadow-2xl">
+                        <div
+                            class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors duration-700 z-10">
+                        </div>
+                        <div
+                            class="absolute inset-3 border border-white/10 z-20 transition-all duration-500 group-hover:inset-4 group-hover:border-gold/50">
+                        </div>
+
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 z-30 transform translate-y-4 group-hover:translate-y-0">
+                            <span class="font-script text-4xl text-gold-light drop-shadow-lg">Vogue Edition</span>
+                        </div>
+                        <img src="images/ring.png"
+                            class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-1000"
+                            alt="Engagement Ring">
+                    </div>
+                    <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+                        <h4 class="font-serif text-2xl text-gold-light tracking-wide">Engagement</h4>
+                        <span class="font-cinzel text-[10px] text-gray-500 uppercase tracking-widest">12
+                            Designs</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group cursor-pointer reveal delay-300">
+                    <div
+                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gray-900 relative shadow-2xl">
+                        <div
+                            class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors duration-700 z-10">
+                        </div>
+                        <div
+                            class="absolute inset-3 border border-white/10 z-20 transition-all duration-500 group-hover:inset-4 group-hover:border-gold/50">
+                        </div>
+
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 z-30 transform translate-y-4 group-hover:translate-y-0">
+                            <span class="font-script text-4xl text-gold-light drop-shadow-lg">Place Vendôme</span>
+                        </div>
+                        <img src="images/store.png"
+                            class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-1000"
+                            alt="Luxury Jewelry Boutique">
+                    </div>
+                    <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+                        <h4 class="font-serif text-2xl text-gold-light tracking-wide">The Boutique</h4>
+                        <span class="font-cinzel text-[10px] text-gray-500 uppercase tracking-widest">08
+                            Boutiques</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer / Credits -->
+        <div class="mt-32 pt-12 text-center relative">
+            <!-- Decorative Divider -->
+            <div class="flex items-center justify-center mb-8 relative z-10">
+                <div class="w-16 h-[1px] bg-gold-dark/30"></div>
+                <div class="w-2.5 h-2.5 border border-gold-dark/30 rotate-45 mx-4 bg-royal"></div>
+                <div class="w-16 h-[1px] bg-gold-dark/30"></div>
+            </div>
+
+            <p class="font-cinzel text-xs tracking-[0.3em] text-gray-600 uppercase">
+                Preserving the Art of Radiant Heritage</p>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ROYAL FINALE (Call To Action) -->
+    <section class="w-full text-gold py-40 px-6 relative overflow-hidden bg-royal">
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gold/5 to-transparent pointer-events-none">
+        </div>
+        <div class="max-w-[1100px] mx-auto relative z-20 text-center">
+
+            <!-- Heading -->
+            <h3 class="font-serif text-5xl md:text-6xl text-gold-light italic mb-6">
+                Forge Your Eternal Legacy
+            </h3>
+
+            <!-- Script Subheading -->
+            <h4 class="font-script text-4xl md:text-5xl text-gold/70 mb-16">
+                Elegance Defined by Light
+            </h4>
+
+            <!-- Feature Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+
+                <!-- Feature 1 -->
+                <div class="bg-charcoal border border-gold-dark/30 p-10 relative">
+                    <div class="absolute inset-3 border border-gold/10 pointer-events-none"></div>
+                    <h5 class="font-cinzel text-lg tracking-widest uppercase text-gold-light mb-4">Artisanal
+                        Craftsmanship
+                    </h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Every piece is hand-finished by master goldsmiths, ensuring a level of detail that
+                        transcends
+                        time and trends.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-charcoal border border-gold-dark/30 p-10 relative">
+                    <div class="absolute inset-3 border border-gold/10 pointer-events-none"></div>
+                    <h5 class="font-cinzel text-lg tracking-widest uppercase text-gold-light mb-4">Rare Gemstones
+                    </h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Sourced from the most prestigious mines, our diamonds and gems are selected for their fire,
+                        clarity, and brilliance.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-charcoal border border-gold-dark/30 p-10 relative">
+                    <div class="absolute inset-3 border border-gold/10 pointer-events-none"></div>
+                    <h5 class="font-cinzel text-lg tracking-widest uppercase text-gold-light mb-4">Heritage Designs
+                    </h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Inspired by archival excellence, our designs balance modern sophistication with significant
+                        historical artistry.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- CTA Button -->
+            <div class="flex justify-center">
+                <button
+                    class="px-12 py-5 border border-gold-dark/50 text-gold-light font-cinzel tracking-[0.25em] text-xs uppercase relative overflow-hidden group transition-all duration-500 hover:bg-gold-light hover:text-royal">
+                    <span class="relative z-10">Commission a Masterpiece</span>
+                </button>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Dynamic Footer Component -->
+    <script src="footer.js"></script>
+    <!-- ================= END ROYAL FOOTER ================= -->
+
+    <!-- Interactive Script -->
+    <script src="royal.js"></script>
+</body>
+
+</html>
