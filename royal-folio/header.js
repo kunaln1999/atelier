@@ -86,8 +86,7 @@ function injectRoyalHeader() {
         'product.html', 'product',
         'documentation.html', 'documentation',
         'privacy.html', 'privacy',
-        'terms.html', 'terms',
-        'editorial.html', 'editorial'
+        'terms.html', 'terms'
     ];
 
     if (innerPages.includes(currentPage)) {
