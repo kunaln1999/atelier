@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Gilded Atelier - Bespoke Jewelry Inquiry</title>
+    <link rel="icon" type="image/png" href="images/crown.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,125 +20,12 @@
     <!-- Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            light: '#FFF5D6',
-                            DEFAULT: '#E6C888',
-                            dark: '#C4A059',
-                            shadow: '#8C6E30'
-                        },
-                        charcoal: '#151515',
-                        royal: '#050505'
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        cinzel: ['"Cinzel"', 'serif'],
-                        script: ['"Pinyon Script"', 'cursive'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
 
-    <style>
-        body {
-            background-color: #050505;
-            color: #E6C888;
-        }
 
-        /* Velvet/Marble Texture */
-        .texture-velvet {
-            position: relative;
-            background-color: #050505;
-        }
-
-        /* Custom Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Shine effect for gold text */
-        .shine-text {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: shine 8s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Input Styles (Sharp) */
-        main input,
-        main textarea {
-            border-radius: 0 !important;
-            background-color: transparent !important;
-            border-color: rgba(196, 160, 89, 0.15) !important;
-            color: #FFF5D6 !important;
-            transition: all 0.5s ease;
-        }
-
-        main input:focus,
-        main textarea:focus {
-            outline: none !important;
-            border-color: rgba(230, 200, 136, 0.7) !important;
-            box-shadow: 0 0 20px rgba(230, 200, 136, 0.05) !important;
-            background-color: rgba(255, 255, 255, 0.03) !important;
-        }
-
-        main input::placeholder,
-        main textarea::placeholder {
-            color: rgba(196, 160, 89, 0.15) !important;
-        }
-
-        /* Royal Hairline Frame */
-        .royal-frame {
-            position: relative;
-        }
-
-        .royal-frame::after {
-            content: '';
-            position: absolute;
-            top: 12px;
-            bottom: 12px;
-            left: 12px;
-            right: 12px;
-            border: 1px solid rgba(230, 200, 136, 0.1);
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        /* Button Refinement (Sharp) */
-        .royal-btn {
-            border-radius: 0 !important;
-            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .royal-btn:hover {
-            letter-spacing: 0.4em;
-            background-color: #E6C888;
-            color: #050505;
-        }
-    </style>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 
 <body class="min-h-screen font-sans selection:bg-gold-dark selection:text-white bg-royal texture-velvet">
@@ -158,7 +46,7 @@
 
         <!-- ================= HERO SECTION ================= -->
         <section class="max-w-[1200px] mx-auto text-center mb-24 reveal active">
-            <h1 class="font-serif text-6xl md:text-8xl text-gold-light mb-6 shine-text italic leading-tight">
+            <h1 class="font-serif text-6xl md:text-8xl text-gold-light mb-6 italic leading-tight">
                 Enter the Atelier
             </h1>
             <p class="font-cinzel text-xs md:text-sm tracking-[0.4em] uppercase text-gold/60 mb-8">
@@ -187,14 +75,14 @@
                             Appointment</p>
                     </div>
 
-                    <form action="#" class="relative z-10 space-y-8">
+                    <form id="contact-form" action="#" class="relative z-10 space-y-8">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div class="space-y-3">
                                 <label
                                     class="block font-cinzel text-[10px] tracking-widest uppercase text-gold/80 ml-1">
                                     Full Name <span class="text-gold-light/40 ml-1">*</span>
                                 </label>
-                                <input type="text" placeholder="Your Name..."
+                                <input type="text" placeholder="Your Name..." required
                                     class="w-full border px-6 py-4 text-sm font-serif">
                             </div>
                             <div class="space-y-3">
@@ -202,7 +90,7 @@
                                     class="block font-cinzel text-[10px] tracking-widest uppercase text-gold/80 ml-1">
                                     Email Address <span class="text-gold-light/40 ml-1">*</span>
                                 </label>
-                                <input type="email" placeholder="client@atelier.com"
+                                <input type="email" placeholder="client@atelier.com" required
                                     class="w-full border px-6 py-4 text-sm font-serif">
                             </div>
                         </div>
@@ -219,15 +107,47 @@
                             <label class="block font-cinzel text-[10px] tracking-widest uppercase text-gold/80 ml-1">
                                 A Bespoke Vision <span class="text-gold-light/40 ml-1">*</span>
                             </label>
-                            <textarea rows="6" placeholder="Describe your vision or the heirloom you seek..."
+                            <textarea rows="6" placeholder="Describe your vision or the heirloom you seek..." required
                                 class="w-full border px-6 py-4 text-sm font-serif resize-none"></textarea>
                         </div>
 
-                        <button type="submit"
+                        <div id="form-status" class="hidden text-center scale-95 opacity-0 transition-all duration-700">
+                            <p class="font-cinzel text-[10px] tracking-[0.3em] uppercase text-gold-light">
+                                <i class="fa-solid fa-check-circle mr-2 opacity-60"></i>
+                                Inquiry Sent
+                            </p>
+                        </div>
+
+                        <button id="submit-btn" type="submit"
                             class="w-full px-12 py-5 border border-gold-dark/50 text-gold-light font-cinzel tracking-[0.25em] text-xs uppercase relative overflow-hidden group transition-all duration-500 hover:bg-gold-light hover:text-royal">
                             <span class="relative z-10">Send Inquiry</span>
                         </button>
                     </form>
+
+                    <script>
+                        document.getElementById('contact-form').addEventListener('submit', function (e) {
+                            e.preventDefault();
+                            const btn = document.getElementById('submit-btn');
+                            const status = document.getElementById('form-status');
+
+                            // Visual feedback
+                            btn.style.opacity = '0';
+                            btn.style.pointerEvents = 'none';
+
+                            setTimeout(() => {
+                                btn.classList.add('hidden');
+                                status.classList.remove('hidden');
+
+                                // Trigger animation
+                                requestAnimationFrame(() => {
+                                    status.style.opacity = '1';
+                                    status.style.transform = 'scale(1)';
+                                });
+                            }, 400);
+
+                            // Optional: Reset form or show success message for few seconds
+                        });
+                    </script>
                 </div>
             </div>
 
@@ -257,9 +177,9 @@
                         <div class="relative">
                             <h5 class="font-cinzel text-[10px] tracking-[0.3em] text-gold/40 uppercase mb-4">Concierge
                                 Desk</h5>
-                            <a href="mailto:concierge@royaljewels.com"
+                            <a href="mailto:concierge@thegildedatelier.com"
                                 class="font-serif text-2xl text-gold-light hover:text-gold transition duration-500">
-                                concierge@royaljewels.com
+                                concierge@thegildedatelier.com
                             </a>
                         </div>
 
@@ -298,7 +218,7 @@
     <script src="footer.js"></script>
 
     <!-- Interactive Script -->
-    <script src="royal.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

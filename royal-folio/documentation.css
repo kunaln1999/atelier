@@ -1,0 +1,36 @@
+/* Opacity Variants (specifically used in documentation) */
+.text-gold-dark\/20 {
+    color: rgba(196, 160, 89, 0.2);
+}
+
+.text-gold-dark\/30 {
+    color: rgba(196, 160, 89, 0.3);
+}
+
+.text-gold-dark\/50 {
+    color: rgba(196, 160, 89, 0.5);
+}
+
+.text-gold-light\/90 {
+    color: rgba(255, 245, 214, 0.9);
+}
+
+.text-gold-light\/80 {
+    color: rgba(255, 245, 214, 0.8);
+}
+
+.bg-white\/\[0\.01\] {
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+/* Custom Styles from internal style block */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}

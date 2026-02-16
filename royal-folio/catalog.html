@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oeuvres d'Art &mdash; The Gilded Atelier | Haute Joaillerie</title>
+    <link rel="icon" type="image/png" href="images/crown.png">
     <meta name="description"
         content="Discover a legacy of radiant sovereignty. Experience our collection of D-Flawless diamonds, rare Kashmiri sapphires, and hand-forged platinum masterpieces within the sanctuary of our private atelier.">
 
@@ -21,207 +22,12 @@
     <!-- Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            light: '#FFF5D6',
-                            DEFAULT: '#E6C888', // Standard Gold
-                            dark: '#C4A059',    // Antique Gold
-                            shadow: '#8C6E30',
-                            dim: 'rgba(196, 160, 89, 0.4)'
-                        },
-                        obsidian: '#050505',
-                        royal: '#050505',
-                        charcoal: '#0a0a0a',
-                        velvet: '#0f0f0f'
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        cinzel: ['"Cinzel"', 'serif'],
-                        script: ['"Pinyon Script"', 'cursive'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'gold-gradient': 'linear-gradient(120deg, #FDFBF0 0%, #EEDC9A 30%, #D4B264 70%, #F0D695 100%)',
-                        'spotlight': 'radial-gradient(circle at 50% 0%, rgba(230, 200, 136, 0.12) 0%, transparent 60%)',
-                        'dust-gradient': 'radial-gradient(circle, #E6C888 1px, transparent 1px)'
-                    },
-                    boxShadow: {
-                        'museum': '0 30px 60px -12px rgba(0, 0, 0, 0.7)',
-                        'glow': '0 0 25px rgba(196, 160, 89, 0.2)',
-                    },
-                    transitionDuration: {
-                        'slow': '600ms',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            background-color: #050505;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* STRICT NO BORDER RADIUS RULE */
-        * {
-            border-radius: 0 !important;
-        }
-
-        /* Gold Dust Animation */
-        .gold-dust {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        /* Particle - keeping roundness for particles only as they are light, but if strictly no radius, I should make them squares? 
-           "Strict rule: No corner radius anywhere. Every element must have sharp, clean, defined edges." 
-           I will make particles diamond shaped (rotate 45deg squares) or just squares to be safe.
-        */
-        .dust-particle {
-            position: absolute;
-            background: #E6C888;
-            width: 2px;
-            height: 2px;
-            transform: rotate(45deg);
-            opacity: 0;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-
-        @keyframes float-rise {
-            0% {
-                transform: translateY(100vh) scale(0) rotate(45deg);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 0.6;
-            }
-
-            80% {
-                opacity: 0.4;
-            }
-
-            100% {
-                transform: translateY(-20px) scale(1) rotate(45deg);
-                opacity: 0;
-            }
-        }
-
-        /* Reveal Animation - Slow & Ceremonial */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Architecture Grid Item */
-        .catalog-item {
-            position: relative;
-            background: transparent;
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* Shine effect for gold text */
-        .shine-text {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: shine 5s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Image Container - Sharp Edges */
-        .image-frame {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(196, 160, 89, 0.2);
-            /* Thin gold border */
-            transition: border-color 0.6s ease, box-shadow 0.6s ease;
-        }
-
-        .catalog-item:hover .image-frame {
-            border-color: rgba(230, 200, 136, 0.6);
-            box-shadow: 0 0 30px rgba(196, 160, 89, 0.1);
-        }
-
-        .catalog-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
-            filter: brightness(0.9) contrast(1.05);
-        }
-
-        .catalog-item:hover .catalog-image {
-            transform: scale(1.04);
-            /* 4% zoom */
-            filter: brightness(1.0) contrast(1.1);
-        }
-
-        /* Text Styling */
-        .item-title {
-            transition: color 0.5s ease;
-        }
-
-        .catalog-item:hover .item-title {
-            color: #FFF5D6;
-            /* gold-light */
-            text-shadow: 0 0 10px rgba(230, 200, 136, 0.3);
-        }
 
 
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #E6C888;
-        }
-
-        /* Dropdown Sharpness */
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            border-radius: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="catalog.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 
 <body class="bg-obsidian text-gold-light min-h-screen font-sans selection:bg-gold-dark selection:text-white">
@@ -293,7 +99,7 @@
                         alt="Sovereign Shield">
                 </div>
 
-                <h3 class="font-serif text-5xl md:text-6xl text-gold-light italic mb-8 shine-text leading-tight">
+                <h3 class="font-serif text-5xl md:text-6xl text-gold-light italic mb-8 leading-tight">
                     Arrange an Exclusive Consultation
                 </h3>
 

@@ -1,0 +1,166 @@
+/* Opacity & Layout Variants */
+.border-gold-dark\/5 {
+    border-color: rgba(196, 160, 89, 0.05);
+}
+
+.bg-gold-dark\/10 {
+    background-color: rgba(196, 160, 89, 0.1);
+}
+
+.bg-charcoal\/40 {
+    background-color: rgba(10, 10, 10, 0.4);
+}
+
+.text-gold-dark\/60 {
+    color: rgba(196, 160, 89, 0.6);
+}
+
+.text-gold-dark\/70 {
+    color: rgba(196, 160, 89, 0.7);
+}
+
+.text-gold-dark\/80 {
+    color: rgba(196, 160, 89, 0.8);
+}
+
+.bg-gradient-to-b.from-gold-dark {
+    background-image: linear-gradient(to bottom, var(--gold-dark), transparent);
+}
+
+/* Custom Styles */
+body {
+    overflow-x: hidden;
+}
+
+/* Gold Dust Animation */
+.gold-dust {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.dust-particle {
+    position: absolute;
+    background: #E6C888;
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-rise 15s infinite ease-in-out;
+}
+
+@keyframes float-rise {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-20px) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Museum Frame Hover Effects */
+.museum-frame-container {
+    position: relative;
+    padding: 2.5rem;
+    /* Generous breathing room */
+    border: 1px solid rgba(196, 160, 89, 0.2);
+    /* Thin gold border */
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: rgba(10, 10, 10, 0.4);
+}
+
+.museum-frame-container::before {
+    /* Inner thin border */
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(196, 160, 89, 0.1);
+    pointer-events: none;
+    transition: all 0.6s ease;
+}
+
+.group:hover .museum-frame-container {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(196, 160, 89, 0.15);
+    /* Soft depth + glow */
+    border-color: rgba(230, 200, 136, 0.5);
+    transform: translateY(-5px);
+}
+
+.group:hover .museum-frame-container::before {
+    border-color: rgba(230, 200, 136, 0.3);
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    /* Slight inset shift */
+}
+
+.museum-image {
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: contrast(1.1) brightness(0.9);
+}
+
+.group:hover .museum-image {
+    transform: scale(1.03);
+    /* 3-4% zoom */
+    filter: contrast(1.15) brightness(1);
+}
+
+/* Title Fade In */
+.hover-title-container {
+    opacity: 0.7;
+    transform: translateY(10px);
+    transition: all 0.6s ease-out;
+}
+
+.group:hover .hover-title-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gold-underline-anim {
+    width: 0;
+    height: 1px;
+    background-color: #E6C888;
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.group:hover .gold-underline-anim {
+    width: 80px;
+    /* Expands outward */
+}
+
+
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.animate-slide-down {
+    animation: slide-down 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}

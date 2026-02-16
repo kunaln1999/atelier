@@ -1,0 +1,88 @@
+/* Opacity Variants (specifically used in contact) */
+.bg-charcoal\/40 {
+    background-color: rgba(21, 21, 21, 0.4);
+}
+
+.bg-royal\/40 {
+    background-color: rgba(5, 5, 5, 0.4);
+}
+
+.text-gold\/40 {
+    color: rgba(230, 200, 136, 0.4);
+}
+
+.text-gold\/50 {
+    color: rgba(230, 200, 136, 0.5);
+}
+
+.text-gold\/60 {
+    color: rgba(230, 200, 136, 0.6);
+}
+
+.text-gold\/80 {
+    color: rgba(230, 200, 136, 0.8);
+}
+
+.text-gold-light\/40 {
+    color: rgba(255, 245, 214, 0.4);
+}
+
+/* Velvet/Marble Texture */
+.texture-velvet {
+    position: relative;
+    background-color: #050505;
+}
+
+/* Input Styles (Sharp) */
+main input,
+main textarea {
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    border-color: rgba(196, 160, 89, 0.15) !important;
+    color: #FFF5D6 !important;
+    transition: all 0.5s ease;
+}
+
+main input:focus,
+main textarea:focus {
+    outline: none !important;
+    border-color: rgba(230, 200, 136, 0.7) !important;
+    box-shadow: 0 0 20px rgba(230, 200, 136, 0.05) !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+main input::placeholder,
+main textarea::placeholder {
+    color: rgba(196, 160, 89, 0.15) !important;
+}
+
+/* Royal Hairline Frame */
+.royal-frame {
+    position: relative;
+}
+
+.royal-frame::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    border: 1px solid rgba(230, 200, 136, 0.1);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Button Refinement (Sharp) */
+.royal-btn {
+    border-radius: 0 !important;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.royal-btn:hover {
+    letter-spacing: 0.4em;
+    background-color: #E6C888;
+    color: #050505;
+}

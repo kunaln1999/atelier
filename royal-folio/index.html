@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Gilded Atelier — Haute Joaillerie & Master Craftsmanship</title>
+    <link rel="icon" type="image/png" href="images/crown.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,119 +20,11 @@
     <!-- Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            light: '#FFF5D6',
-                            DEFAULT: '#E6C888',
-                            dark: '#C4A059',
-                            shadow: '#8C6E30'
-                        },
-                        charcoal: '#151515',
-                        royal: '#050505'
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        cinzel: ['"Cinzel"', 'serif'],
-                        script: ['"Pinyon Script"', 'cursive'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'gold-gradient': 'linear-gradient(120deg, #FDFBF0 0%, #EEDC9A 30%, #D4B264 70%, #F0D695 100%)',
-                        'gold-text': 'linear-gradient(to right, #FDFBF0, #EEDC9A, #FDFBF0)',
-                        'dark-texture': 'linear-gradient(to bottom, #111, #000)'
-                    },
-                    boxShadow: {
-                        'elegant': '0 20px 50px -12px rgba(0, 0, 0, 0.5)',
-                        'inner-gold': 'inset 0 0 0 1px rgba(26, 26, 26, 0.1)'
-                    },
-                    letterSpacing: {
-                        'widest-royal': '0.25em',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Custom Styles for Specific Visual Fidelity */
-        body {
-            background-color: #050505;
-        }
-
-        /* Subtle Grain Texture */
-        .texture-grain {
-            position: relative;
-        }
-
-        .texture-grain::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            opacity: 0.4;
-            pointer-events: none;
-            mix-blend-mode: multiply;
-            z-index: 1;
-        }
-
-        /* Elegant Thin Lines */
-        .hairline-border {
-            position: relative;
-        }
-
-        .hairline-border::after {
-            content: '';
-            position: absolute;
-            top: 12px;
-            bottom: 12px;
-            left: 12px;
-            right: 12px;
-            border: 1px solid rgba(26, 26, 26, 0.15);
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        /* Smooth reveal animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Shine effect for gold text */
-        .shine-text {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: shine 5s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Perspective background */
-        .perspective-bg {
-            background-image:
-                radial-gradient(circle at 50% 0%, #ffffff 0%, #dcdcdc 70%);
-        }
-    </style>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
 </head>
 
 <body
@@ -150,17 +43,18 @@
         <div class="absolute inset-0 pointer-events-none border border-charcoal/20 z-30"></div>
 
         <!-- Right Image Area (Moved outside to fill utmost right) -->
-        <div class="absolute right-0 bottom-0 top-0 w-full md:w-3/5 pointer-events-none overflow-hidden z-10">
+        <div class="absolute right-0 bottom-0 top-0 w-full md:w-4/5 lg:w-3/5 pointer-events-none overflow-hidden z-10">
             <!-- Using a majestic royal portrait -->
             <img src="images/woman-portrait.png" alt="Majestic Haute Joaillerie"
                 class="absolute right-0 bottom-[-5%] w-[110%] h-[110%] object-cover object-center contrast-[1.02] brightness-[1.05]"
-                style="mask-image: linear-gradient(to left, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);">
+                style="mask-image: linear-gradient(to left, black 50%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);">
         </div>
 
         <div class="max-w-[1300px] mx-auto h-full flex flex-col md:flex-row relative z-20 reveal active">
 
             <!-- Left Content -->
-            <div class="relative z-20 flex-1 py-16 md:py-28 flex flex-col justify-start h-full pr-12 md:pr-20">
+            <div
+                class="relative z-20 flex-1 md:max-w-xl py-16 md:py-28 flex flex-col justify-start h-full pr-12 md:pr-12">
 
                 <!-- Top Logo -->
                 <div class="flex items-center space-x-2 mb-4">
@@ -175,11 +69,11 @@
                 </div>
 
                 <!-- Main Title Area -->
-                <div class="flex-grow flex flex-col justify-center relative z-20">
+                <div class="flex-grow flex flex-col justify-start md:justify-center pt-12 md:pt-0 relative z-20">
                     <h1
                         class="font-serif text-5xl md:text-6xl lg:text-7xl text-gold-light leading-[0.9] mb-8 tracking-tight drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
-                        The Gilded<br>
-                        <span class="font-normal italic">Atelier</span>
+                        A Sovereign<br>
+                        <span class="font-normal italic">Legacy</span>
                     </h1>
 
                     <div class="relative">
@@ -192,8 +86,8 @@
                     <!-- Enhanced Badge -->
                     <div class="flex items-center mt-12 space-x-6 border-l-2 border-gold-dark/30 pl-6 py-2">
                         <div
-                            class="bg-royal text-gold-light w-10 h-10 flex items-center justify-center font-sans font-bold text-lg shadow-lg border-2 border-gold/40">
-                            Au
+                            class="bg-royal text-gold-light w-10 h-10 flex items-center justify-center shadow-lg border-2 border-gold/40">
+                            <i class="fa-solid fa-crown text-sm"></i>
                         </div>
                         <div class="flex flex-col space-y-1">
                             <span
@@ -216,14 +110,14 @@
     </section>
 
     <!-- SECTION 2: DARK SHOWCASE (The Context) -->
-    <section class="w-full text-gold py-24 px-4 md:px-12 relative z-0 bg-royal">
+    <section class="w-full text-gold py-24 px-6 md:px-16 lg:px-24 relative z-0 bg-royal">
 
         <div class="max-w-[1300px] mx-auto">
             <div
-                class="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-gold-dark/20 pb-10 reveal">
+                class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 border-b border-gold-dark/20 pb-10 reveal">
                 <div class="relative pl-8">
                     <div class="absolute left-0 top-0 bottom-0 w-[1px] bg-gold-dark/40"></div>
-                    <h3 class="font-serif text-5xl md:text-6xl text-gold-light mb-4 shine-text italic">Eternal
+                    <h3 class="font-serif text-5xl md:text-6xl text-gold-light mb-4 italic">Eternal
                         Radiance
                     </h3>
                     <p class="font-sans text-gray-500 max-w-md tracking-wide leading-relaxed pl-1">Discover a world
@@ -241,12 +135,12 @@
             </div>
 
             <!-- Grid of Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
                 <!-- Card 1 -->
                 <div class="group cursor-pointer reveal delay-100">
                     <div
-                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gray-900 relative shadow-2xl">
+                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gold-dark/20 relative shadow-2xl">
                         <div
                             class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors duration-700 z-10">
                         </div>
@@ -264,7 +158,7 @@
                             class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-1000"
                             alt="High Jewelry Necklace">
                     </div>
-                    <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+                    <div class="flex justify-between items-end border-b border-gold-dark/30 pb-2">
                         <h4 class="font-serif text-2xl text-gold-light tracking-wide">High Jewelry</h4>
                         <span class="font-cinzel text-[10px] text-gray-500 uppercase tracking-widest">04
                             Creations</span>
@@ -274,7 +168,7 @@
                 <!-- Card 2 -->
                 <div class="group cursor-pointer reveal delay-200">
                     <div
-                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gray-900 relative shadow-2xl">
+                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gold-dark/20 relative shadow-2xl">
                         <div
                             class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors duration-700 z-10">
                         </div>
@@ -290,7 +184,7 @@
                             class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-1000"
                             alt="Engagement Ring">
                     </div>
-                    <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+                    <div class="flex justify-between items-end border-b border-gold-dark/30 pb-2">
                         <h4 class="font-serif text-2xl text-gold-light tracking-wide">Engagement</h4>
                         <span class="font-cinzel text-[10px] text-gray-500 uppercase tracking-widest">12
                             Designs</span>
@@ -300,7 +194,7 @@
                 <!-- Card 3 -->
                 <div class="group cursor-pointer reveal delay-300">
                     <div
-                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gray-900 relative shadow-2xl">
+                        class="bg-charcoal aspect-[4/3] mb-6 overflow-hidden border border-gold-dark/20 relative shadow-2xl">
                         <div
                             class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors duration-700 z-10">
                         </div>
@@ -316,7 +210,7 @@
                             class="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-1000"
                             alt="Luxury Jewelry Boutique">
                     </div>
-                    <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+                    <div class="flex justify-between items-end border-b border-gold-dark/30 pb-2">
                         <h4 class="font-serif text-2xl text-gold-light tracking-wide">The Boutique</h4>
                         <span class="font-cinzel text-[10px] text-gray-500 uppercase tracking-widest">08
                             Boutiques</span>
@@ -357,7 +251,7 @@
             </h4>
 
             <!-- Feature Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
 
                 <!-- Feature 1 -->
                 <div class="bg-charcoal border border-gold-dark/30 p-10 relative">
@@ -413,7 +307,7 @@
     <!-- ================= END ROYAL FOOTER ================= -->
 
     <!-- Interactive Script -->
-    <script src="royal.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

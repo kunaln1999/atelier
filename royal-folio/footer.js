@@ -5,114 +5,95 @@
 function injectRoyalFooter() {
     const footerHTML = `
     <!-- ================= ROYAL FOOTER ================= -->
-    <footer
-        class="w-full bg-royal text-gold-light pt-28 pb-16 px-6 md:px-8 relative overflow-hidden border-t border-gold-dark/30">
+    <footer class="royal-footer">
 
         <!-- Subtle Top Gradient Glow -->
-        <div class="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-gold/10 to-transparent pointer-events-none">
-        </div>
+        <div class="footer-glow"></div>
 
         <!-- Decorative Divider -->
-        <div class="flex items-center justify-center mb-20 relative z-10">
-            <div class="w-20 h-[1px] bg-gold-dark/40"></div>
-            <div class="w-3 h-3 border border-gold-dark/50 rotate-45 mx-4 bg-royal"></div>
-            <div class="w-20 h-[1px] bg-gold-dark/40"></div>
+        <div class="footer-divider">
+            <div class="footer-divider-line"></div>
+            <div class="footer-divider-diamond"></div>
+            <div class="footer-divider-line"></div>
         </div>
 
-        <div class="max-w-[1300px] mx-auto relative z-20">
+        <div class="footer-container">
 
             <!-- MAIN GRID -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 border-y border-gold-dark/20 py-16 relative">
+            <div class="footer-main-grid">
 
                 <!-- Column 1: Brand -->
-                <div class="space-y-6">
-                    <div class="flex items-center space-x-4">
-                        <img src="images/crown.png" class="w-12 h-12 opacity-80" alt="Crown">
-                        <span class="font-cinzel tracking-[0.25em] text-sm uppercase">The Gilded Atelier</span>
+                <div class="footer-col">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <img src="images/crown.png" style="width: 2.2rem; height: 2.2rem; opacity: 0.8;" alt="Crown">
+                        <h5 class="footer-title" style="margin-bottom: 0;">The Gilded Atelier</h5>
                     </div>
 
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
+                    <p class="footer-text">
                         A tribute to heritage, craftsmanship, and the eternal brilliance of fine jewelry.
                     </p>
 
-                    <h4 class="font-script text-3xl text-gold/70">
+                    <h4 class="font-script" style="font-size: 1.875rem; color: rgba(230, 200, 136, 0.7); margin-top: 1rem;">
                         Designed for Brilliance
                     </h4>
                 </div>
 
-                <!-- Column 2 -->
-                <div>
-                    <h5 class="font-cinzel text-xs tracking-[0.3em] uppercase mb-8 text-gold-light">Collections</h5>
-                    <ul class="space-y-4 text-sm text-gray-400">
-                        <li><a href="index.html"
-                                class="hover:text-gold transition duration-500 border-b border-transparent hover:border-gold">Home</a>
-                        </li>
-                        <li><a href="boutique.html"
-                                class="hover:text-gold transition duration-500 border-b border-transparent hover:border-gold">Jewellery</a>
-                        </li>
-                        <li><a href="editorial.html"
-                                class="hover:text-gold transition duration-500 border-b border-transparent hover:border-gold">Editorial</a>
-                        </li>
-                        <li><a href="contact.html"
-                                class="hover:text-gold transition duration-500 border-b border-transparent hover:border-gold">Contact</a>
-                        </li>
+                <!-- Column 2: Collections -->
+                <div class="footer-col">
+                    <h5 class="footer-title">Collections</h5>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="catalog.html" class="footer-link">Jewellery</a></li>
+                        <li><a href="editorial.html" class="footer-link">Editorial</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Column 3 -->
-                <div>
-                    <h5 class="font-cinzel text-xs tracking-[0.3em] uppercase mb-8 text-gold-light">Resources</h5>
-                    <ul class="space-y-4 text-sm text-gray-400">
-                        <li><a href="documentation.html"
-                                class="hover:text-gold transition duration-500 border-b border-transparent hover:border-gold">Documentation</a>
-                        </li>
-                        <li><a href="#"
-                                class="hover:text-gold transition duration-500 border-b border-transparent hover:border-gold">Licensing</a>
-                        </li>
-                        <li><a href="contact.html"
-                                class="hover:text-gold transition duration-500 border-b border-transparent hover:border-gold">Support</a>
-                        </li>
-                        <li><a href="faq.html"
-                                class="hover:text-gold transition duration-500 border-b border-transparent hover:border-gold">FAQ</a>
-                        </li>
+                <!-- Column 3: Resources -->
+                <div class="footer-col">
+                    <h5 class="footer-title">Resources</h5>
+                    <ul class="footer-links-list">
+                        <li><a href="documentation.html" class="footer-link">Documentation</a></li>
+                        <li><a href="faq.html" class="footer-link">FAQs</a></li>
+                        <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+                        <li><a href="terms.html" class="footer-link">Terms</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 4: Newsletter -->
-                <div>
-                    <h5 class="font-cinzel text-xs tracking-[0.3em] uppercase mb-8 text-gold-light">The Atelier Post</h5>
+                <div class="footer-col">
+                    <h5 class="footer-title">The Atelier Post</h5>
 
-                    <p class="text-gray-400 text-sm mb-6">
+                    <p class="footer-text">
                         Receive curated updates on our latest collections and bespoke creations.
                     </p>
 
-                    <div class="relative">
-                        <input type="email" placeholder="Your Email Address"
-                            class="w-full bg-transparent border border-gold-dark/40 px-4 py-3 text-sm tracking-wide placeholder-gray-600 focus:outline-none focus:border-gold transition-all duration-500" />
+                    <div id="footer-newsletter-form" class="footer-input-group transition-all duration-500">
+                        <input id="footer-email-input" type="email" placeholder="Your Email Address" class="footer-input" />
+                        <button id="footer-subscribe-btn" class="footer-btn">Subscribe</button>
+                    </div>
 
-                        <button
-                            class="mt-4 w-full border border-gold-dark/50 py-3 text-xs font-cinzel tracking-[0.25em] uppercase transition-all duration-500 hover:bg-gold-light hover:text-royal">
-                            Subscribe
-                        </button>
+                    <div id="footer-newsletter-status" class="hidden text-center scale-95 opacity-0 transition-all duration-700 mt-4">
+                        <p class="font-cinzel text-[10px] tracking-[0.3em] uppercase text-gold-light">
+                             <i class="fa-solid fa-check-circle mr-2 opacity-60"></i>
+                             Subscribed
+                        </p>
                     </div>
                 </div>
 
             </div>
 
             <!-- Bottom Section -->
-            <div
-                class="mt-16 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs tracking-widest uppercase">
-
-                <p class="font-cinzel tracking-[0.25em] text-gray-600">
+            <div class="footer-bottom">
+                <p class="footer-bottom-text">
                     The Gilded Atelier &copy; 2026
                 </p>
 
-                <div class="flex space-x-6 mt-6 md:mt-0">
-                    <a href="#" class="hover:text-gold transition duration-500"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-gold transition duration-500"><i class="fab fa-dribbble"></i></a>
-                    <a href="#" class="hover:text-gold transition duration-500"><i class="fab fa-behance"></i></a>
+                <div class="footer-social-links">
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="footer-social-link"><i class="fab fa-youtube"></i></a>
                 </div>
-
             </div>
 
         </div>
@@ -121,6 +102,34 @@ function injectRoyalFooter() {
 
     // Inject at the end of body
     document.body.insertAdjacentHTML('beforeend', footerHTML);
+
+    // --- Newsletter Logic ---
+    const subscribeBtn = document.getElementById('footer-subscribe-btn');
+    const newsletterForm = document.getElementById('footer-newsletter-form');
+    const newsletterStatus = document.getElementById('footer-newsletter-status');
+    const emailInput = document.getElementById('footer-email-input');
+
+    if (subscribeBtn && newsletterForm && newsletterStatus) {
+        subscribeBtn.addEventListener('click', () => {
+            // Simple validation
+            if (emailInput.value.trim() === "") return;
+
+            // Visual feedback
+            newsletterForm.style.opacity = '0';
+            newsletterForm.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                newsletterForm.classList.add('hidden');
+                newsletterStatus.classList.remove('hidden');
+
+                // Trigger animation
+                requestAnimationFrame(() => {
+                    newsletterStatus.style.opacity = '1';
+                    newsletterStatus.style.transform = 'scale(1)';
+                });
+            }, 400);
+        });
+    }
 }
 
 // Execute injection immediately

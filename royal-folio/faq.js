@@ -29,45 +29,10 @@ function toggleFaq(element) {
     }
 }
 
-// --- Gold Dust Particle System ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    createGoldDust();
     initScrollReveal();
-    // Headers are now managed by header.js
 });
-
-// revealHeader function removed as it is now centralized in header.js
-
-function createGoldDust() {
-    const container = document.getElementById('gold-dust-container');
-    if (!container) return; // Guard clause
-
-    const particleCount = 40; // Number of particles
-
-    for (let i = 0; i < particleCount; i++) {
-        const dust = document.createElement('div');
-        dust.classList.add('gold-dust');
-
-        // Random positioning
-        const xPos = Math.random() * 100; // 0-100% width
-        const yPos = Math.random() * 100; // 0-100% height (initial)
-        const delay = Math.random() * 15; // Random delay up to 15s
-        const duration = 10 + Math.random() * 10; // Random duration 10-20s (faster for effect)
-        const size = Math.random() * 2 + 1; // 1px to 3px
-
-        dust.style.left = `${xPos}%`;
-        dust.style.top = `${yPos}%`;
-        dust.style.animationDelay = `-${delay}s`; // Start at random times
-        dust.style.animationDuration = `${duration}s`;
-
-        // Random slight scaling
-        dust.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
-
-        container.appendChild(dust);
-    }
-}
-
 // --- Scroll Reveal Animation ---
 
 function initScrollReveal() {
