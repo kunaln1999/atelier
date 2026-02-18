@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commission a Masterpiece — The Gilded Atelier</title>
+    <link rel="icon" type="image/png" href="images/crown.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;800&family=Lato:wght@300;400;700&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="bespoke.css">
+    <link rel="stylesheet" href="index.css"> <!-- Reusing index styles for texture/hairline -->
+
+
+</head>
+
+<body class="bg-royal text-gold selection:bg-gold-dark selection:text-white overflow-x-hidden font-sans">
+
+    <!-- Dynamic Header Component -->
+    <script src="header.js"></script>
+
+    <main>
+
+        <!-- HERO SECTION: Masterpiece Introduction -->
+        <section
+            class="relative h-[80vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden border-b border-gold-dark/10 bg-royal"
+            id="commission-hero">
+
+            <!-- Ambient Background -->
+            <div class="absolute inset-0 bg-spotlight pointer-events-none opacity-60"></div>
+            <div class="gold-dust" id="dust-container"></div>
+
+            <!-- Illumination behind text -->
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-gold-dark/5 blur-[100px] rounded-full pointer-events-none">
+            </div>
+
+            <div class="z-20 flex flex-col items-center">
+                <h1 class="font-serif text-6xl md:text-8xl text-gold-light italic leading-tight mb-6">
+                    Commission a Masterpiece
+                </h1>
+
+                <p
+                    class="font-cinzel text-xs md:text-sm tracking-[0.4em] uppercase text-gold-dark/80 font-medium mb-12">
+                    A Collaborative Vision of Excellence
+                </p>
+
+                <a href="#bespoke-process"
+                    class="px-12 py-5 border border-gold-dark/50 text-gold-light font-cinzel tracking-[0.25em] text-xs uppercase relative overflow-hidden group transition-all duration-500 hover:bg-gold-light hover:text-royal">
+                    <span class="relative z-10">Begin Your Design Journey</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- TRUST SECTION: Assurance & Ethics (Redesigned) -->
+        <section class="py-16 bg-royal border-y border-gold-dark/10 relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-16 md:gap-8">
+
+                    <!-- Item 1 -->
+                    <div class="flex flex-col items-center text-center flex-1">
+                        <div class="mb-4">
+                            <i class="fa-solid fa-gem text-gold-dark/40 text-[20px]"></i>
+                        </div>
+                        <h4 class="font-cinzel text-[9px] tracking-[0.4em] text-gold-light uppercase mb-3">Certified
+                            Materials</h4>
+                        <div class="w-8 h-[1px] bg-gold-dark/20 mb-3"></div>
+                        <p class="text-gold-dark/30 text-[8px] uppercase tracking-[0.2em] font-sans">Ethically Sourced &
+                            D-Flawless</p>
+                    </div>
+
+                    <!-- Vertical Divider (Hidden on mobile) -->
+                    <div
+                        class="hidden md:block w-[1px] h-12 bg-gradient-to-b from-transparent via-gold-dark/10 to-transparent">
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex flex-col items-center text-center flex-1">
+                        <div class="mb-4">
+                            <i class="fa-solid fa-pen-nib text-gold-dark/40 text-[20px]"></i>
+                        </div>
+                        <h4 class="font-cinzel text-[9px] tracking-[0.4em] text-gold-light uppercase mb-3">Design
+                            Curator</h4>
+                        <div class="w-8 h-[1px] bg-gold-dark/20 mb-3"></div>
+                        <p class="text-gold-dark/30 text-[8px] uppercase tracking-[0.2em] font-sans">Master Goldsmith
+                            Advisory</p>
+                    </div>
+
+                    <!-- Vertical Divider -->
+                    <div
+                        class="hidden md:block w-[1px] h-12 bg-gradient-to-b from-transparent via-gold-dark/10 to-transparent">
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex flex-col items-center text-center flex-1">
+                        <div class="mb-4">
+                            <i class="fa-solid fa-user-shield text-gold-dark/40 text-[20px]"></i>
+                        </div>
+                        <h4 class="font-cinzel text-[9px] tracking-[0.4em] text-gold-light uppercase mb-3">
+                            Confidentiality</h4>
+                        <div class="w-8 h-[1px] bg-gold-dark/20 mb-3"></div>
+                        <p class="text-gold-dark/30 text-[8px] uppercase tracking-[0.2em] font-sans">Private Secure
+                            Process</p>
+                    </div>
+
+                    <!-- Vertical Divider -->
+                    <div
+                        class="hidden md:block w-[1px] h-12 bg-gradient-to-b from-transparent via-gold-dark/10 to-transparent">
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="flex flex-col items-center text-center flex-1">
+                        <div class="mb-4">
+                            <i class="fa-solid fa-infinity text-gold-dark/40 text-[20px]"></i>
+                        </div>
+                        <h4 class="font-cinzel text-[9px] tracking-[0.4em] text-gold-light uppercase mb-3">Lifetime Care
+                        </h4>
+                        <div class="w-8 h-[1px] bg-gold-dark/20 mb-3"></div>
+                        <p class="text-gold-dark/30 text-[8px] uppercase tracking-[0.2em] font-sans">Enduring Heritage
+                            Service</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BESPOKE PROCESS SECTION: The Journey -->
+        <section id="bespoke-process" class="py-40 bg-royal relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div
+                class="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 blur-[150px] rounded-full translate-x-1/2 -translate-y-1/2">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-rose-gold/5 blur-[150px] rounded-full -translate-x-1/2 translate-y-1/2">
+            </div>
+
+            <div class="container mx-auto px-6">
+                <!-- Section Heading -->
+                <div class="text-center mb-32">
+                    <h2 class="font-serif text-5xl md:text-6xl text-gold-light italic mb-6">The Art of Creation</h2>
+                    <h3 class="font-script text-4xl md:text-5xl text-gold/70">Elegance defined by your vision</h3>
+                </div>
+
+                <div class="max-w-5xl mx-auto">
+                    <div class="space-y-48">
+
+                        <!-- Step 1: Conceptual Vision -->
+                        <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                            <div class="w-full md:w-1/2 order-2 md:order-1">
+                                <span
+                                    class="font-cinzel text-[10px] tracking-[0.5em] text-gold-dark uppercase block mb-6">Step
+                                    I</span>
+                                <h3 class="font-serif text-4xl text-gold-light italic mb-8">Conceptual Vision</h3>
+
+                                <div class="space-y-10 glass-panel p-10 md:p-14 relative group">
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-colors">
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block font-cinzel text-[10px] tracking-[0.3em] text-gold-dark uppercase mb-4">Jewellery
+                                            Selection</label>
+                                        <div class="relative">
+                                            <select id="select-jewellery"
+                                                class="w-full bg-transparent border-b border-gold-dark/20 py-4 text-gold-light focus:outline-none focus:border-gold-dark transition-all appearance-none cursor-pointer">
+                                                <option class="bg-charcoal" value="" disabled selected>Select Item...
+                                                </option>
+                                                <option class="bg-charcoal">Sovereign Signet Ring</option>
+                                                <option class="bg-charcoal">D-Flawless Solitaire</option>
+                                                <option class="bg-charcoal">Art Deco Cocktail Ring</option>
+                                                <option class="bg-charcoal">Eternal Heritage Band</option>
+                                                <option class="bg-charcoal">Radiant Chandelier Earrings</option>
+                                                <option class="bg-charcoal">Minimalist Diamond Studs</option>
+                                                <option class="bg-charcoal">Baroque Pearl Drops</option>
+                                                <option class="bg-charcoal">Haute Joaillerie Collier</option>
+                                                <option class="bg-charcoal">Delicate Tennis Necklace</option>
+                                                <option class="bg-charcoal">Imperial Locket Pendant</option>
+                                                <option class="bg-charcoal">Statement Gold Cuff</option>
+                                                <option class="bg-charcoal">Diamond Tennis Bracelet</option>
+                                                <option class="bg-charcoal">Artisanal Charm Bracelet</option>
+                                                <option class="bg-charcoal">Grand Atelier Tiara</option>
+                                                <option class="bg-charcoal">Jewelled Hair Ornament</option>
+                                                <option class="bg-charcoal">Bespoke Heritage Brooch</option>
+                                                <option class="bg-charcoal">Elegant Lapel Pin</option>
+                                                <option class="bg-charcoal">Sovereign Cufflinks</option>
+                                                <option class="bg-charcoal">Jewelled Watch Case</option>
+                                                <option class="bg-charcoal">Ceremonial Headdress</option>
+                                            </select>
+                                            <div
+                                                class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gold-dark/40">
+                                                <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block font-cinzel text-[10px] tracking-[0.3em] text-gold-dark uppercase mb-2">The
+                                            Narrative</label>
+                                        <input id="brief-narrative" type="text"
+                                            placeholder="e.g. A Legacy Heirloom for the 50th Jubilee..."
+                                            class="w-full bg-transparent border-b border-gold-dark/20 py-4 text-gold-light focus:outline-none focus:border-gold-dark transition-all placeholder:text-gold/20">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2 order-1 md:order-2">
+                                <div
+                                    class="aspect-[4/5] bg-charcoal border border-gold-dark/20 relative overflow-hidden group shadow-2xl">
+                                    <div class="absolute inset-0 bg-gold/10 transition-colors duration-[2s] z-10">
+                                    </div>
+                                    <img src="images/con-vision.png" alt="Sketching the Vision"
+                                        class="w-full h-full object-cover transition-transform duration-[3s]">
+                                    <!-- Inner Frame Pattern -->
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-all duration-700">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step II: Material Artistry -->
+                        <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                            <div class="w-full md:w-1/2">
+                                <div
+                                    class="aspect-[4/5] bg-charcoal border border-gold-dark/20 relative overflow-hidden group shadow-2xl">
+                                    <div class="absolute inset-0 bg-gold/10 transition-colors duration-[2s] z-10">
+                                    </div>
+                                    <img src="images/MaterialArtistry.png" alt="Material Selection"
+                                        class="w-full h-full object-cover transition-transform duration-[3s]">
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-all duration-700">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <span
+                                    class="font-cinzel text-[10px] tracking-[0.5em] text-gold-dark uppercase block mb-6">Step
+                                    II</span>
+                                <h3 class="font-serif text-4xl text-gold-light italic mb-8">Material Artistry</h3>
+
+                                <div class="space-y-10 glass-panel p-10 md:p-14 relative group">
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-colors">
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block font-cinzel text-[10px] tracking-[0.3em] text-gold-dark uppercase mb-6">Noble
+                                            Metals</label>
+                                        <div class="grid grid-cols-4 gap-4" id="metal-selection-grid">
+                                            <div class="metal-btn flex flex-col items-center gap-3 cursor-pointer group active"
+                                                data-metal="Yellow Gold">
+                                                <div
+                                                    class="w-10 h-10 rounded-full bg-[#E6C888] border border-white/10 ring-2 ring-gold/50 ring-offset-2 ring-offset-charcoal transition-all">
+                                                </div>
+                                                <span
+                                                    class="text-[9px] tracking-widest uppercase text-gold/60 font-cinzel">24K
+                                                    Yellow</span>
+                                            </div>
+                                            <div class="metal-btn flex flex-col items-center gap-3 cursor-pointer group"
+                                                data-metal="Rose Gold">
+                                                <div
+                                                    class="w-10 h-10 rounded-full bg-[#E0C3B2] border border-white/10 ring-2 ring-transparent ring-offset-2 ring-offset-charcoal transition-all">
+                                                </div>
+                                                <span
+                                                    class="text-[9px] tracking-widest uppercase text-gold/60 font-cinzel">Subtle
+                                                    Rose</span>
+                                            </div>
+                                            <div class="metal-btn flex flex-col items-center gap-3 cursor-pointer group"
+                                                data-metal="Platinum">
+                                                <div
+                                                    class="w-10 h-10 rounded-full bg-[#E5E5E5] border border-white/10 ring-2 ring-transparent ring-offset-2 ring-offset-charcoal transition-all">
+                                                </div>
+                                                <span
+                                                    class="text-[9px] tracking-widest uppercase text-gold/60 font-cinzel">950
+                                                    Platinum</span>
+                                            </div>
+                                            <div class="metal-btn flex flex-col items-center gap-3 cursor-pointer group"
+                                                data-metal="White Gold">
+                                                <div
+                                                    class="w-10 h-10 rounded-full bg-[#F3F3F3] border border-white/10 ring-2 ring-transparent ring-offset-2 ring-offset-charcoal transition-all">
+                                                </div>
+                                                <span
+                                                    class="text-[9px] tracking-widest uppercase text-gold/60 font-cinzel">18K
+                                                    White</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block font-cinzel text-[10px] tracking-[0.3em] text-gold-dark uppercase mb-4">Gemstone
+                                            Curation</label>
+                                        <div class="relative">
+                                            <select id="select-gemstone"
+                                                class="w-full bg-transparent border-b border-gold-dark/20 py-4 text-gold-light focus:outline-none focus:border-gold-dark transition-all appearance-none cursor-pointer">
+                                                <option class="bg-charcoal" value="" disabled selected>Select
+                                                    Gemstone...</option>
+                                                <option class="bg-charcoal">D-Flawless Brilliant Diamond</option>
+                                                <option class="bg-charcoal">Kashmiri Royal Blue Sapphire</option>
+                                                <option class="bg-charcoal">Columbian Muzo Emerald</option>
+                                                <option class="bg-charcoal">Rare Burmese Pigeon Blood Ruby</option>
+                                                <option class="bg-charcoal">Hand-Selected Natural Pink Diamond</option>
+                                                <option class="bg-charcoal">Brazilian Paraíba Tourmaline</option>
+                                                <option class="bg-charcoal">Rare Red Alexandrite</option>
+                                                <option class="bg-charcoal">Vivid Yellow Canary Diamond</option>
+                                                <option class="bg-charcoal">Imperial Pink Topaz</option>
+                                                <option class="bg-charcoal">Australian Black Opal</option>
+                                                <option class="bg-charcoal">Tanzanian Royal Zultanite</option>
+                                                <option class="bg-charcoal">Deep Sea South Sea Pearl</option>
+                                                <option class="bg-charcoal">Natural Padparadscha Sapphire</option>
+                                                <option class="bg-charcoal">Rare Violet Spinel</option>
+                                                <option class="bg-charcoal">Tsavorite Garnet of Merelani</option>
+                                            </select>
+                                            <div
+                                                class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gold-dark/40">
+                                                <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step III: Timeline & Sourcing -->
+                        <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                            <div class="w-full md:w-1/2 order-2 md:order-1">
+                                <span
+                                    class="font-cinzel text-[10px] tracking-[0.5em] text-gold-dark uppercase block mb-6">Step
+                                    III</span>
+                                <h3 class="font-serif text-4xl text-gold-light italic mb-8">Heritage Sourcing</h3>
+
+                                <div class="space-y-12 glass-panel p-10 md:p-14 relative group">
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-colors">
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block font-cinzel text-[10px] tracking-[0.3em] text-gold-dark uppercase mb-4">Investment
+                                            Scale</label>
+                                        <div
+                                            class="flex justify-between text-[10px] font-cinzel text-gold-dark/40 mb-4 uppercase tracking-[0.2em]">
+                                            <span>Initial Tier</span>
+                                            <span id="budget-value" class="text-gold-light font-bold">$100,000+</span>
+                                            <span>Sovereign Tier</span>
+                                        </div>
+                                        <input type="range" min="10000" max="1000000" step="10000"
+                                            class="w-full h-[1px] bg-gold-dark/10 appearance-none cursor-pointer accent-gold-dark"
+                                            id="budget-slider">
+                                    </div>
+
+                                    <div class="grid grid-cols-1 gap-12">
+                                        <div>
+                                            <label
+                                                class="block font-cinzel text-[10px] tracking-[0.3em] text-gold-dark uppercase mb-4">Crafting
+                                                Window</label>
+                                            <div class="relative">
+                                                <select id="select-timeline"
+                                                    class="w-full bg-transparent border-b border-gold-dark/20 py-4 text-gold-light focus:outline-none focus:border-gold-dark transition-all appearance-none cursor-pointer">
+                                                    <option class="bg-charcoal" value="" disabled selected>Select
+                                                        Window...</option>
+                                                    <option class="bg-charcoal">6-12 Weeks (Standard)</option>
+                                                    <option class="bg-charcoal">3-6 Months (Grand Masterpiece)</option>
+                                                    <option class="bg-charcoal">Express Acquisition</option>
+                                                </select>
+                                                <div
+                                                    class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gold-dark/40">
+                                                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2 order-1 md:order-2">
+                                <div
+                                    class="aspect-[4/5] bg-charcoal border border-gold-dark/20 relative overflow-hidden group shadow-2xl">
+                                    <div class="absolute inset-0 bg-gold/10 transition-colors duration-[2s] z-10">
+                                    </div>
+                                    <img src="images/HeritageSourcing.png" alt="The Finished Design"
+                                        class="w-full h-full object-cover transition-transform duration-[3s]">
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-all duration-700">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step IV: Private Discourse (Consultation) -->
+                        <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                            <div class="w-full md:w-1/2">
+                                <div class="relative group">
+                                    <div
+                                        class="aspect-[4/5] bg-charcoal border border-gold-dark/20 relative overflow-hidden shadow-2xl">
+                                        <div class="absolute inset-0 bg-gold/10 z-10"></div>
+                                        <img src="images/preferreddate.png" alt="Timeless Hourglass"
+                                            class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[2s]">
+                                        <div class="absolute inset-6 border border-white/5 pointer-events-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <span
+                                    class="font-cinzel text-[10px] tracking-[0.5em] text-gold-dark uppercase block mb-6">Step
+                                    IV</span>
+                                <h2 class="font-serif text-4xl text-gold-light italic mb-8">Preferred Date</h2>
+
+                                <!-- CALENDAR INTERFACE -->
+                                <div class="glass-panel p-10 md:p-14 relative group">
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-colors">
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between items-center mb-8 pb-4 border-b border-gold-dark/10">
+                                        <h4 id="calendar-month-year"
+                                            class="font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold">
+                                            February 2026</h4>
+                                        <div class="flex gap-4">
+                                            <button id="prev-month"
+                                                class="text-gold-dark/40 hover:text-gold transition-colors"><i
+                                                    class="fa-solid fa-chevron-left text-[9px]"></i></button>
+                                            <button id="next-month"
+                                                class="text-gold-dark/40 hover:text-gold transition-colors"><i
+                                                    class="fa-solid fa-chevron-right text-[9px]"></i></button>
+                                        </div>
+                                    </div>
+
+                                    <div id="calendar-grid" class="grid grid-cols-7 gap-y-6 text-center">
+                                        <!-- Days injected here -->
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step V: Your Identity -->
+                        <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24">
+                            <div class="w-full md:w-1/2 order-2 md:order-1">
+                                <span
+                                    class="font-cinzel text-[10px] tracking-[0.5em] text-gold-dark uppercase block mb-6">Step
+                                    V</span>
+                                <h2 class="font-serif text-4xl text-gold-light italic mb-8">Your Identity</h2>
+
+                                <div class="space-y-10 glass-panel p-10 md:p-14 relative group">
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-colors">
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block font-cinzel text-[10px] tracking-[0.3em] text-gold-dark uppercase mb-2">Full
+                                            Name</label>
+                                        <input id="patron-name" type="text" placeholder="Your Full Name..."
+                                            class="w-full bg-transparent border-b border-gold-dark/20 py-4 text-gold-light focus:outline-none focus:border-gold-dark transition-all placeholder:text-gold-dark/30 text-lg">
+                                    </div>
+
+                                    <div>
+                                        <label
+                                            class="block font-cinzel text-[10px] tracking-[0.3em] text-gold-dark uppercase mb-2">Mobile
+                                            Number</label>
+                                        <input id="patron-mobile" type="tel" placeholder="+1 (000) 000 — 0000"
+                                            class="w-full bg-transparent border-b border-gold-dark/20 py-4 text-gold-light focus:outline-none focus:border-gold-dark transition-all placeholder:text-gold-dark/30 text-lg">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="w-full md:w-1/2 order-1 md:order-2">
+                                <div
+                                    class="aspect-[4/5] bg-charcoal border border-gold-dark/20 relative overflow-hidden group shadow-2xl">
+                                    <div class="absolute inset-0 bg-gold/10 transition-colors duration-[2s] z-10"></div>
+                                    <img src="images/identiy-woman.png" alt="The Patron's Signature"
+                                        class="w-full h-full object-cover transition-transform duration-[3s]">
+                                    <div
+                                        class="absolute inset-3 border border-gold/10 pointer-events-none transition-all duration-700">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-40 flex flex-col items-center">
+                        <div id="brief-action-container"
+                            class="transition-all duration-700 w-full flex flex-col items-center">
+                            <button id="confirm-brief-btn"
+                                class="px-20 py-6 border border-gold-dark/50 text-gold-light font-cinzel tracking-[0.3em] text-xs uppercase relative overflow-hidden group transition-all duration-500 hover:bg-gold-light hover:text-royal">
+                                <span class="relative z-10">Confirm Design Brief</span>
+                            </button>
+                            <p id="brief-error-message"
+                                class="mt-8 font-cinzel text-[9px] tracking-[0.2em] text-rose-500 uppercase opacity-0 transition-opacity duration-500">
+                                Please complete all 5 steps to proceed</p>
+                        </div>
+
+                        <!-- Success Message (Inspired by Footer) -->
+                        <div id="brief-success-status"
+                            class="hidden text-center scale-95 opacity-0 transition-all duration-1000">
+                            <div class="mb-10 flex items-center justify-center">
+                                <div class="w-32 h-[1px] bg-gold-dark/40"></div>
+                                <div class="w-3 h-3 border border-gold-dark/40 rotate-45 mx-6"></div>
+                                <div class="w-32 h-[1px] bg-gold-dark/40"></div>
+                            </div>
+                            <h4 class="font-serif text-3xl text-gold-light italic mb-4">Inquiry Received</h4>
+                            <p class="font-cinzel text-[10px] tracking-[0.4em] uppercase text-gold-dark">
+                                <i class="fa-solid fa-envelope-open-text mr-3 opacity-60"></i>
+                                Our Team Will Contact You Shortly
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Dynamic Footer Component -->
+    <script src="footer.js"></script>
+
+    <!-- Interactive Script -->
+    <script src="main.js"></script>
+    <script src="bespoke.js"></script>
+    <script src="dust.js"></script>
+
+
+</body>
+
+</html>

@@ -20,14 +20,14 @@ function injectRoyalHeader() {
 
             <!-- Center: Navigation -->
             <nav class="header-nav font-cinzel">
-                <a href="index.html" class="header-link">Home</a>
                 <a href="catalog.html" class="header-link">Jewellery</a>
+                <a href="bespoke.html" class="header-link">Bespoke</a>
                 <a href="editorial.html" class="header-link">Editorial</a>
                 <a href="contact.html" class="header-link">Contact</a>
             </nav>
 
             <!-- Right: Desktop CTA -->
-            <button class="header-cta">Explore</button>
+            <a href="catalog.html" class="header-cta">Explore</a>
 
             <!-- Mobile Hamburger -->
             <button id="royal-hamburger" class="header-hamburger" aria-expanded="false">
@@ -53,14 +53,14 @@ function injectRoyalHeader() {
             </div>
 
             <nav class="mobile-nav">
-                <a href="index.html" class="mobile-link">Home</a>
                 <a href="catalog.html" class="mobile-link">Jewellery</a>
+                <a href="bespoke.html" class="mobile-link">Bespoke</a>
                 <a href="editorial.html" class="mobile-link">Editorial</a>
                 <a href="contact.html" class="mobile-link">Contact</a>
 
                 <div class="mobile-menu-separator"></div>
 
-                <button class="mobile-cta">Explore</button>
+                <a href="catalog.html" class="mobile-cta" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">Explore</a>
             </nav>
         </div>
     </div>`;
@@ -86,7 +86,8 @@ function injectRoyalHeader() {
         'product.html', 'product',
         'documentation.html', 'documentation',
         'privacy.html', 'privacy',
-        'terms.html', 'terms'
+        'terms.html', 'terms',
+        'bespoke.html', 'bespoke'
     ];
 
     if (innerPages.includes(currentPage)) {

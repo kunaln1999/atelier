@@ -46,7 +46,7 @@ body {
 
 .dust-particle {
     position: absolute;
-    background: #E6C888;
+    background: var(--gold);
     border-radius: 50%;
     opacity: 0;
     animation: float-rise 15s infinite ease-in-out;
@@ -138,7 +138,7 @@ body {
 .gold-underline-anim {
     width: 0;
     height: 1px;
-    background-color: #E6C888;
+    background-color: var(--gold);
     transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     margin: 0 auto;
     margin-top: 1rem;

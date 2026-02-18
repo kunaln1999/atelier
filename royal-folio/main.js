@@ -37,7 +37,7 @@ class RoyalUI {
         // Skip default full-screen scroll logic on specific pages handled by header.js
         const path = window.location.pathname;
         // Robust check for inner pages (handles extensionless URLs)
-        const innerPages = ['contact', 'faq', 'catalog', 'product', 'documentation', 'privacy', 'terms'];
+        const innerPages = ['contact', 'faq', 'catalog', 'product', 'documentation', 'privacy', 'terms', 'bespoke'];
         if (innerPages.some(page => path.includes(page))) return;
 
         window.addEventListener('scroll', () => {

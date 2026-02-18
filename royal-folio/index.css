@@ -32,15 +32,15 @@
 }
 
 .text-gray-400 {
-    color: #9ca3af;
+    color: var(--gray);
 }
 
 .text-gray-500 {
-    color: #6b7280;
+    color: var(--gray-medium);
 }
 
 .text-gray-600 {
-    color: #4b5563;
+    color: var(--gray-dark);
 }
 
 .tracking-\[0\.25em\] {

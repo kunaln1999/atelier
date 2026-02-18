@@ -92,7 +92,7 @@
         font-size: 11px;
         text-transform: uppercase;
         letter-spacing: 0.25em;
-        color: #9ca3af;
+        color: var(--gray);
     }
 }
 
@@ -113,7 +113,10 @@
 
 @media (min-width: 1024px) {
     .header-cta {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
         padding: 0.5rem 1.5rem;
         border: 1px solid rgba(196, 160, 89, 0.5);
         color: var(--gold-light);
@@ -255,7 +258,7 @@
     text-transform: uppercase;
     letter-spacing: 0.25em;
     font-family: var(--font-cinzel);
-    color: #9ca3af;
+    color: var(--gray);
 }
 
 .mobile-link {

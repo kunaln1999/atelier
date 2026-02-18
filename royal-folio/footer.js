@@ -42,8 +42,8 @@ function injectRoyalFooter() {
                 <div class="footer-col">
                     <h5 class="footer-title">Collections</h5>
                     <ul class="footer-links-list">
-                        <li><a href="index.html" class="footer-link">Home</a></li>
                         <li><a href="catalog.html" class="footer-link">Jewellery</a></li>
+                        <li><a href="bespoke.html" class="footer-link">Bespoke</a></li>
                         <li><a href="editorial.html" class="footer-link">Editorial</a></li>
                         <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>

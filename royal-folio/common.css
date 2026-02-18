@@ -9,6 +9,21 @@
     --royal: #050505;
     --obsidian: #050505;
 
+    /* Standardized Text Colors (Aliases) */
+    --lightgold: var(--gold-light);
+    --subgold: var(--gold-dark);
+    --white: #FFFFFF;
+    --gray: #9CA3AF;
+    /* Cool Gray 400 */
+    --gray-medium: #6B7280;
+    /* Cool Gray 500 */
+    --gray-light: #D1D5DB;
+    /* Cool Gray 300 */
+    --gray-dark: #4B5563;
+    /* Cool Gray 600 */
+    --gray-warm: #A8A29E;
+    /* Warm Gray 400 */
+
     /* Fonts */
     --font-serif: "Playfair Display", serif;
     --font-cinzel: "Cinzel", serif;
@@ -48,6 +63,12 @@ body {
     overflow-x: hidden;
 }
 
+input,
+select,
+textarea {
+    font-family: var(--font-cinzel);
+}
+
 ::selection {
     background-color: var(--gold-dark);
     color: white;
@@ -64,6 +85,38 @@ body {
 
 .text-gold {
     color: var(--gold);
+}
+
+.text-lightgold {
+    color: var(--lightgold);
+}
+
+.text-subgold {
+    color: var(--subgold);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.text-gray {
+    color: var(--gray);
+}
+
+.text-gray-medium {
+    color: var(--gray-medium);
+}
+
+.text-gray-light {
+    color: var(--gray-light);
+}
+
+.text-gray-dark {
+    color: var(--gray-dark);
+}
+
+.text-gray-warm {
+    color: var(--gray-warm);
 }
 
 .font-serif {
@@ -131,11 +184,27 @@ body {
     background-image: var(--spotlight);
 }
 
+.bg-gold-dark\/10 {
+    background-color: rgba(196, 160, 89, 0.1);
+}
+
+.bg-gold-dark\/20 {
+    background-color: rgba(196, 160, 89, 0.2);
+}
+
+.bg-gold-dark\/30 {
+    background-color: rgba(196, 160, 89, 0.3);
+}
+
 .bg-gold-dark\/40 {
     background-color: rgba(196, 160, 89, 0.4);
 }
 
 /* Opacity Border Variants - Common across pages */
+.border-gold-dark\/5 {
+    border-color: rgba(196, 160, 89, 0.05);
+}
+
 .border-gold-dark\/10 {
     border-color: rgba(196, 160, 89, 0.1);
 }
@@ -202,4 +271,48 @@ body {
 
 .hover\:text-royal:hover {
     color: var(--royal);
+}
+
+/* Floating Dust Animation (Common) */
+.gold-dust {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.dust-particle {
+    position: absolute;
+    background: rgba(230, 200, 136, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 15;
+}
+
+@keyframes float-rise {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-20vh) translateX(20px);
+        opacity: 0;
+    }
+}
+
+/* Opacity Text Variants (Matches HTML classes) */
+.text-gold-dark\/80 {
+    color: rgba(196, 160, 89, 0.8);
+}
+
+.text-gold-dark\/60 {
+    color: rgba(196, 160, 89, 0.6);
 }
